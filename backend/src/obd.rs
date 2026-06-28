@@ -886,10 +886,7 @@ impl OBD {
     ) -> Vec<Mode22Pid> {
         let mut results = Vec::new();
 
-        // This does not work when replaying requests
-        if self.replay_requests {
-            return results;
-        }
+        let is_replay = self.replay_requests;
 
         // Get a Mode 22 pids for the model from the vin
         // Run them all, see if the output is valid.
