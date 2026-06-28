@@ -7,7 +7,7 @@ mod stats;
 use bridge::events::{
     do_send_connection_status, listen_connect_elm, listen_decode_vin, listen_send_ports,
 };
-use obdium::{
+use neobdium::{
     vin::{vpic_db_path, APP_DATA_DIR},
     OBD,
 };

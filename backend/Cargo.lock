@@ -1893,6 +1893,30 @@ dependencies = [
 ]
 
 [[package]]
+name = "neobdium"
+version = "1.5.7"
+dependencies = [
+ "chrono",
+ "evalexpr",
+ "num_enum",
+ "once_cell",
+ "rand",
+ "regex",
+ "serde",
+ "serde_json",
+ "serialport",
+ "sqlite",
+ "tauri",
+ "tauri-build",
+ "tauri-plugin-dialog",
+ "tauri-plugin-fs",
+ "tauri-plugin-shell",
+ "thiserror 2.0.18",
+ "tokio",
+ "xz2",
+]
+
+[[package]]
 name = "new_debug_unreachable"
 version = "1.0.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1944,30 +1968,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 2.0.117",
-]
-
-[[package]]
-name = "obdium"
-version = "1.5.0"
-dependencies = [
- "chrono",
- "evalexpr",
- "num_enum",
- "once_cell",
- "rand",
- "regex",
- "serde",
- "serde_json",
- "serialport",
- "sqlite",
- "tauri",
- "tauri-build",
- "tauri-plugin-dialog",
- "tauri-plugin-fs",
- "tauri-plugin-shell",
- "thiserror 2.0.18",
- "tokio",
- "xz2",
 ]
 
 [[package]]

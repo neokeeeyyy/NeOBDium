@@ -1,5 +1,5 @@
-use obdium::{scalar::Scalar, BankNumber};
-use obdium::{Command, SensorNumber, Service, OBD, PAUSE_OBD_COUNT};
+use neobdium::{scalar::Scalar, BankNumber};
+use neobdium::{Command, SensorNumber, Service, OBD, PAUSE_OBD_COUNT};
 use serde::{Deserialize, Serialize};
 use std::sync::atomic::Ordering;
 use std::{

@@ -1,4 +1,4 @@
-use obdium::obd::{Error, OBD};
+use neobdium::obd::{Error, OBD};
 
 fn main() -> Result<(), Error> {
     // Connecting via ELM327

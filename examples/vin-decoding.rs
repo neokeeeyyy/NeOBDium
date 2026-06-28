@@ -1,4 +1,4 @@
-use obdium::vin::VIN;
+use neobdium::vin::VIN;
 
 fn main() {
     // Create the VIN object.

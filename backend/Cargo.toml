@@ -1,6 +1,6 @@
 [package]
-name = "obdium"
-version = "1.5.0"
+name = "neobdium"
+version = "1.5.7"
 edition = "2021"
 
 [dependencies]

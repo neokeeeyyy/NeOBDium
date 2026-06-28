@@ -12,10 +12,10 @@ use crate::bridge::{
     USER_COMMAND_LISTENER,
 };
 use crate::{connect_obd, track_data, OBD};
-use obdium::dicts::PID_INFOS;
-use obdium::scalar::UnitPreferences;
-use obdium::vin::VIN;
-use obdium::{Command, PAUSE_OBD_COUNT};
+use neobdium::dicts::PID_INFOS;
+use neobdium::scalar::UnitPreferences;
+use neobdium::vin::VIN;
+use neobdium::{Command, PAUSE_OBD_COUNT};
 use std::sync::atomic::Ordering;
 use std::sync::{Arc, Mutex};
 use std::time::Duration;

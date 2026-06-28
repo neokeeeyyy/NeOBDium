@@ -67,7 +67,7 @@ jobs:
       - name: upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: obdium-void-x86_64
+          name: neobdium-void-x86_64
           path: |
             backend/target/release/bundle/appimage/*.AppImage
             backend/target/release/bundle/deb/*.deb

@@ -19,10 +19,9 @@
       "icons/icon.ico"
     ]
   },
-  "productName": "obdium",
-  "mainBinaryName": "obdium",
-  "version": "1.5.0",
-  "identifier": "com.obdium.app",
+  "productName": "NeOBDium",
+  "mainBinaryName": "neobdium",
+  "identifier": "com.neobdium.app",
   "plugins": {},
   "app": {
     "withGlobalTauri": true,
