@@ -5,7 +5,8 @@ mod bridge;
 mod stats;
 
 use bridge::events::{
-    do_send_connection_status, listen_connect_elm, listen_decode_vin, listen_send_ports,
+    do_send_connection_status, listen_connect_elm, listen_decode_vin, listen_send_mode22_pids,
+    listen_send_ports,
 };
 use neobdium::{
     vin::{vpic_db_path, APP_DATA_DIR},
@@ -176,6 +177,7 @@ fn main() {
                 listen_send_ports(&window_arc);
                 listen_track_custom_pid(&window_arc);
                 listen_connect_elm(&window_arc);
+                listen_send_mode22_pids(&window_arc);
 
                 sleep(Duration::from_secs(1));
 

@@ -11,7 +11,7 @@ use crate::cmd::{Command, CommandType};
 use crate::response::Response;
 use crate::scalar::{Scalar, Unit, UnitPreferences};
 use crate::vin::VIN;
-use crate::mode22_pids_db_path;
+use crate::{mode22_pids_db_path, Mode22Pid};
 
 #[derive(Debug)]
 pub enum BankNumber {
@@ -880,10 +880,15 @@ impl OBD {
 
     /// Test and run Mode 22 pids from
     /// /data/model-pids.sqlite
-    pub fn test_mode_22_pids(&mut self, vin: &VIN) {
+    pub fn test_mode_22_pids(
+        &mut self,
+        vin: &VIN,
+    ) -> Vec<Mode22Pid> {
+        let mut results = Vec::new();
+
         // This does not work when replaying requests
         if self.replay_requests {
-            return;
+            return results;
         }
 
         // Get a Mode 22 pids for the model from the vin
@@ -893,7 +898,7 @@ impl OBD {
         // Repeat
         let model = match vin.get_engine_manufacturer() {
             Ok(em) => em,
-            Err(_) => return,
+            Err(_) => return results,
         };
 
         // connect to mode 22 database
@@ -901,7 +906,7 @@ impl OBD {
             Ok(con) => con,
             Err(err) => {
                 println!("when connecting to mode22 database: {err}");
-                return;
+                return results;
             }
         };
 
@@ -910,7 +915,7 @@ impl OBD {
             Ok(statement) => statement,
             Err(err) => {
                 println!("when sanitizing statement {query}: {err}");
-                return;
+                return results;
             }
         };
 
@@ -918,7 +923,7 @@ impl OBD {
             Ok(_) => {}
             Err(err) => {
                 println!("when binding model '{}' to query {query}: {err}", model);
-                return;
+                return results;
             }
         };
 
@@ -937,7 +942,7 @@ impl OBD {
                 .expect("reading description");
 
             let command = Command::new_arb(&pid);
-            self.query(command).map_no_data(|response| {
+            let value = self.query(command).map_no_data(|response| {
                 match self.calculate_dynamic_equation(&equation, &unit, &response) {
                     Ok(value) => {
                         println!("successfully calculated pid {pid}. equation: {equation}. unit {unit}");
@@ -954,8 +959,19 @@ impl OBD {
                 }
             });
 
+            results.push(Mode22Pid {
+                pid: pid.clone(),
+                description,
+                equation: equation.clone(),
+                unit: unit.clone(),
+                value: value.value,
+                supported: value.unit != Unit::NoData,
+            });
+
             sleep(Duration::from_millis(500));
         }
+
+        results
     }
 
     pub fn calculate_dynamic_equation(

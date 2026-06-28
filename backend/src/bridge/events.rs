@@ -15,7 +15,7 @@ use crate::{connect_obd, track_data, OBD};
 use neobdium::dicts::PID_INFOS;
 use neobdium::scalar::UnitPreferences;
 use neobdium::vin::VIN;
-use neobdium::{Command, PAUSE_OBD_COUNT};
+use neobdium::{Command, Mode22Pid, PAUSE_OBD_COUNT};
 use std::sync::atomic::Ordering;
 use std::sync::{Arc, Mutex};
 use std::time::Duration;
@@ -367,6 +367,28 @@ pub fn listen_clear_dtcs(window: &Arc<WebviewWindow>, obd: &Arc<Mutex<OBD>>) {
     window.listen("clear-dtcs", move |_| {
         let mut obd = obd_arc.lock().unwrap();
         let _ = obd.clear_trouble_codes();
+    });
+}
+
+pub fn listen_send_mode22_pids(window: &Arc<WebviewWindow>) {
+    let window_arc = Arc::new(window.clone());
+    window.listen("get-mode22-pids", move |event| {
+        let payload = event.payload();
+        let vin = match VIN::new(payload.replace("\"", "")) {
+            Ok(vin) => vin,
+            Err(_) => return,
+        };
+
+        let obd_arc = {
+            let active = ACTIVE_OBD.lock().unwrap();
+            active.clone()
+        };
+
+        if let Some(obd_arc) = obd_arc {
+            let mut obd = obd_arc.lock().unwrap();
+            let pids: Vec<Mode22Pid> = obd.test_mode_22_pids(&vin);
+            let _ = window_arc.emit("update-mode22-pids", pids);
+        }
     });
 }
 

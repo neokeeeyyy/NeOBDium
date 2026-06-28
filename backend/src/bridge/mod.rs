@@ -55,6 +55,16 @@ pub(crate) struct CustomPid {
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
+pub(crate) struct Mode22Pid {
+    pub pid: String,
+    pub description: String,
+    pub equation: String,
+    pub unit: String,
+    pub value: f32,
+    pub supported: bool,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub(crate) struct FrontendNotification {
     pub title: &'static str,
     pub description: &'static str,

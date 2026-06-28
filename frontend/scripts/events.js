@@ -421,6 +421,39 @@ listen("decode-vin-result", (event) => {
   }
 
   exportButton.disabled = false;
+
+  if (data.error_msg === "Decoded successfully.") {
+    emit("get-mode22-pids", data.vin);
+  }
+});
+
+listen("update-mode22-pids", (event) => {
+  const pids = event.payload;
+  const container = document.getElementById("vin-container");
+  if (!container) return;
+
+  const existing = document.getElementById("mode22-header");
+  if (existing) existing.remove();
+
+  const header = document.createElement("div");
+  header.id = "mode22-header";
+  header.className = "w-full col-span-full mt-2 mb-1";
+  header.innerHTML = `<h2 style="color:var(--primary);font-size:1.1rem;border-bottom:1px solid var(--border);padding-bottom:4px">PIDS MODO \$22 (${pids.length})</h2>`;
+  container.appendChild(header);
+
+  for (const pid of pids) {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.style.borderColor = pid.supported ? "var(--primary)" : "var(--border)";
+    card.style.opacity = pid.supported ? "1" : "0.4";
+    card.innerHTML = `
+      <h3>${pid.description.toUpperCase()}</h3>
+      <div class="value" style="font-size:1.1rem;word-break:break-word;white-space:normal;max-width:320px">
+        ${pid.supported ? pid.value.toFixed(2) + " " + pid.unit.toUpperCase() : "NO SOPORTADO"}
+      </div>
+      <div style="font-size:0.7rem;color:var(--muted);margin-top:2px">PID: ${pid.pid} | EC: ${pid.equation}</div>`;
+    container.appendChild(card);
+  }
 });
 
 listen("display-notification", (event) => {
