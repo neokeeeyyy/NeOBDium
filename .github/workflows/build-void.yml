@@ -15,12 +15,13 @@ jobs:
       options: --user root
 
     steps:
-      - name: install dependencies
+      - name: install system dependencies
         run: |
           xbps-install -Syu xbps
           xbps-install -Sy \
             git \
-            rust cargo \
+            curl \
+            nodejs \
             libwebkit2gtk41-devel \
             gtk+3-devel \
             glib-devel \
@@ -40,13 +41,23 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      - name: build project
-        run: cargo build --release
+      - name: install rust via rustup
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+
+      - name: install tauri-cli
+        run: npm install -g @tauri-apps/cli
+
+      - name: build
+        run: tauri build
         working-directory: ./backend
+        env:
+          TAURI_CLI_NO_DEVTOOLS: true
 
       - name: upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: obdium-void-x86_64
-          path: backend/target/release/obdium
+          path: backend/target/release/bundle/appimage/*.AppImage
           compression-level: 6
