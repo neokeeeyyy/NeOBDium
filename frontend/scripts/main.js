@@ -90,9 +90,9 @@ clearObdButton.addEventListener("click", clearObdView);
 pauseObdButton.addEventListener("click", () => {
   window.obdViewPaused = !window.obdViewPaused;
   if (obdViewPaused) {
-    pauseObdButton.textContent = "RESUME";
+    pauseObdButton.textContent = "REANUDAR";
   } else {
-    pauseObdButton.textContent = "PAUSE";
+    pauseObdButton.textContent = "PAUSAR";
   }
 });
 
@@ -132,7 +132,7 @@ const dtcScanButton = document.getElementById("dtc-scan-button");
 dtcScanButton.addEventListener("click", async () => {
   await new Promise((r) => setTimeout(r, 500));
 
-  addNotification("TROUBLE CODES", "Scanned for diagnostic trouble codes.");
+  addNotification("CÓDIGOS DE ERROR", "Escaneo de códigos de error completado.");
 
   emit("get-dtcs");
 });
@@ -147,7 +147,7 @@ dtcLogButton.addEventListener("click", () => exportDtcs(false));
 const logFileButton = document.getElementById("log-file-button");
 logFileButton.addEventListener("click", async () => {
   window.logFilePath = await save({
-    title: "Save as JSON",
+    title: "Guardar como JSON",
     defaultPath: "requests.json",
     filters: [{ name: "JSON", extensions: ["json"] }],
   });
@@ -175,19 +175,19 @@ imTestExportButton.addEventListener("click", async () => {
     if (testRow.nodeType == 1) {
       const available =
         testRow.querySelector("#test-availability").textContent.trim() ==
-        "AVAILABLE"
+        "COMPLETO"
           ? true
           : false;
       const complete =
         testRow.querySelector("#test-completeness").textContent.trim() ==
-        "COMPLETE"
+        "LISTO"
           ? true
           : false;
 
       const testJSON = {
         name: testRow
           .querySelector("#test-name")
-          .textContent.replace("TEST: ", "")
+          .textContent.replace("PRUEBA: ", "")
           .trim(),
         available: available,
         complete: complete,
@@ -198,7 +198,7 @@ imTestExportButton.addEventListener("click", async () => {
   });
 
   const path = await save({
-    title: "Save as JSON",
+    title: "Guardar como JSON",
     defaultPath: "readiness_tests.json",
     filters: [{ name: "JSON", extensions: ["json"] }],
   });
@@ -227,7 +227,7 @@ vinExportButton.addEventListener("click", async () => {
   });
 
   const path = await save({
-    title: "Save as JSON",
+    title: "Guardar como JSON",
     defaultPath: "vin_details.json",
     filters: [{ name: "JSON", extensions: ["json"] }],
   });

@@ -5,17 +5,22 @@
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
-  background-color: #121212;
-  color: #f0e9f9;
+  font-family: "JetBrains Mono", "Montserrat", "SF Mono", "Fira Code", monospace;
+  background-color: #0d1117;
+  color: #e6edf3;
   display: flex;
   height: 100vh;
   overflow: hidden;
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1 {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 /* Labels */
@@ -23,44 +28,47 @@ h1 {
 .info {
   display: flex;
   flex-direction: column;
+  gap: 1px;
 }
 
 .car-model {
-  font-size: 1.5rem;
-  color: #f7f3ff;
-  font-weight: 700;
+  font-size: 1.15rem;
+  color: #e6edf3;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .connection {
-  font-size: 0.95rem;
-  color: #f7f3ff;
+  font-size: 0.8rem;
+  color: #8b949e;
   font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
 }
 
 .connection-details {
-  font-size: 0.95rem;
-  color: #f7f3ff;
-  font-weight: 500;
+  font-size: 0.78rem;
+  color: #8b949e;
+  font-weight: 400;
   display: flex;
   align-items: center;
   gap: 4px;
-  margin-top: -12px;
-  margin-bottom: 12px;
+  margin-top: -6px;
+  margin-bottom: 8px;
   margin-left: 1px;
+  letter-spacing: 0.02em;
 }
 
 .text-hint {
-  font-size: 0.7rem;
-  color: #575757;
-  font-weight: 500;
+  font-size: 0.65rem;
+  color: #484f58;
+  font-weight: 400;
   display: flex;
   align-items: center;
-  gap: 4px;
-  margin-top: 5px;
-  margin-bottom: 12px;
+  gap: 5px;
+  margin-top: 4px;
+  margin-bottom: 8px;
 }
 
 .label-row {
@@ -71,9 +79,19 @@ h1 {
 
 button.refresh {
   background: none;
-  border: none;
+  border: 1px solid #30363d;
+  border-radius: 4px;
   cursor: pointer;
-  padding: 0;
+  padding: 3px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+button.refresh:hover {
+  border-color: #58a6ff;
+  background: #1c2128;
 }
 
 @keyframes spin {
@@ -87,4 +105,29 @@ button.refresh {
 
 .spinning {
   animation: spin 1.5s linear infinite;
+}
+
+::selection {
+  background: #264f78;
+  color: #e6edf3;
+}
+
+/* Scrollbar global */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #30363d;
+  border-radius: 4px;
+  border: 2px solid #0d1117;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #484f58;
 }

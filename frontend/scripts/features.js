@@ -14,8 +14,8 @@ const terminalOutput = document.getElementById("terminal-output");
 
 export function clearDtcs() {
   addNotification(
-    "TROUBLE CODES",
-    "Cleared all pending diagnostic trouble codes.",
+    "CÓDIGOS DE ERROR",
+    "Códigos de error de diagnóstico pendientes eliminados.",
   );
 
   if (dtcList.innerHTML.trim() == "") {
@@ -24,7 +24,7 @@ export function clearDtcs() {
 
   // clear codes
   emit("clear-dtcs");
-  dtcHeader.textContent = "DIAGNOSTIC TROUBLE CODES (0)";
+  dtcHeader.textContent = "CÓDIGOS DE ERROR (0)";
   dtcList.innerHTML = ``;
 
   // get permanant codes
@@ -53,7 +53,7 @@ export async function exportDtcs(autoSave) {
 
   if (!autoSave) {
     path = await save({
-      title: "Save as JSON",
+      title: "Guardar como JSON",
       defaultPath: "dtc_log.json",
       filters: [{ name: "JSON", extensions: ["json"] }],
     });
@@ -142,7 +142,7 @@ export async function trackGraph(graphId, name, unit) {
     dataset.data = [];
   });
 
-  graph.options.scales.x.title.text = "TIME";
+  graph.options.scales.x.title.text = "TIEMPO";
   graph.startTime = Date.now();
   graph.update();
 
@@ -205,7 +205,7 @@ export async function trackGraph(graphId, name, unit) {
 export function appendTerminalOutput(msg) {
   const now = new Date();
   const timeStr =
-    now.toLocaleTimeString("en-US", { hour12: false }) +
+    now.toLocaleTimeString("es-ES", { hour12: false }) +
     ":" +
     now.getMilliseconds().toString().padStart(3, "0");
   terminalOutput.innerText += `${timeStr} ${msg}\n`;
@@ -227,7 +227,7 @@ export function addNotification(title, desc) {
   const notification = document.createElement("div");
   notification.className = "notification";
   notification.innerHTML = `
-    <div class="notification-hint">NOTIFICATION</div>
+    <div class="notification-hint">NOTIFICACIÓN</div>
     <button class="notification-close">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -346,12 +346,12 @@ export function addCustomPIDRow() {
       <div class="pid-container">
         <div class="info-row">
           <button class="arrow-icon"><img src="/assets/icons/arrow-icon.png"></button>
-          <input class="name" type="text" placeholder="ENTER PID NAME" maxlength="55"></input>
+          <input class="name" type="text" placeholder="INGRESAR NOMBRE PID" maxlength="55"></input>
         </div>
         <div class="pid-details" style="display: none; height: 0;">
           <div class="pid-data-columns">
             <div class="pid-column">
-              <div class="pid-label">MODE</div>
+              <div class="pid-label">MODO</div>
               <input class="pid-value" type="text" placeholder="??" maxlength="2"></input>
             </div>
             <div class="pid-column">
@@ -359,25 +359,25 @@ export function addCustomPIDRow() {
               <input class="pid-value" type="text" placeholder="??" maxlength="4"></input>
             </div>
             <div class="pid-column">
-              <div class="pid-label">COMMAND</div>
+              <div class="pid-label">COMANDO</div>
               <div class="pid-value"></div>
             </div>
             <div class="pid-column">
-              <div class="pid-label">EQUATION</div>
+              <div class="pid-label">ECUACIÓN</div>
               <input class="pid-value" type="text" placeholder="??"></input>
             </div>
             <div class="pid-column">
-              <div class="pid-label">UNIT</div>
+              <div class="pid-label">UNIDAD</div>
               <input class="pid-value" type="text" placeholder="??"></input>
             </div>
           </div>
           <div class="button-row">
             <div class="pid-button" id="remove-pid">
-              <span style="z-index: 5">REMOVE</span>
+              <span style="z-index: 5">ELIMINAR</span>
               <div class="btn-hold-fill" id="remove-pid-fill" style="transition: width 0.3s; width: 0%;"></div>
             </div>
             <div class="pid-button" id="track-pid">
-              <span style="z-index: 5">TRACK</span>
+              <span style="z-index: 5">RASTREAR</span>
               <div class="btn-hold-fill" id="track-pid-fill" style="transition: width 0.3s; width: 0%;"></div>
             </div>
           </div>

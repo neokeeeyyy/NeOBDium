@@ -1,0 +1,52 @@
+name: 'build-void'
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-void:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/void-linux/void-glibc:latest
+      options: --user root
+
+    steps:
+      - name: install dependencies
+        run: |
+          xbps-install -Syu xbps
+          xbps-install -Sy \
+            git \
+            rust cargo \
+            libwebkit2gtk41-devel \
+            gtk+3-devel \
+            glib-devel \
+            cairo-devel \
+            pango-devel \
+            gdk-pixbuf-devel \
+            librsvg-devel \
+            libsoup3-devel \
+            atk-devel \
+            pkg-config \
+            gcc \
+            make \
+            cmake \
+            patch \
+            bzip2 \
+            xz
+
+      - uses: actions/checkout@v4
+
+      - name: build project
+        run: cargo build --release
+        working-directory: ./backend
+
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: obdium-void-x86_64
+          path: backend/target/release/obdium
+          compression-level: 6

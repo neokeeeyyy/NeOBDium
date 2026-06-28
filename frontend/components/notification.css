@@ -1,48 +1,45 @@
 .notification {
   position: relative;
-  background-color: #151515;
-  color: #d4dadf;
-  border-radius: 5px;
-  height: 120px;
-  width: 350px;
-  border: 1px solid #242424;
+  background: #161b22;
+  color: #e6edf3;
+  border-radius: 6px;
+  width: 320px;
+  border: 1px solid #21262d;
   opacity: 1;
   transform: translateY(0);
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease,
-    margin 0.2s ease;
+  overflow: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease, margin 0.2s ease;
+  font-family: "JetBrains Mono", monospace;
 }
 
 .notification-hint {
-  padding-left: 12px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  font-size: 0.75rem;
-  color: #9a9fa3;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #242424;
-}
-
-.notification-title {
-  font-size: 1rem;
-  padding-top: 7px;
-  padding-left: 12px;
-  color: #f7f3ff;
+  padding: 3px 10px;
+  font-size: 0.6rem;
+  color: #484f58;
   font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid #21262d;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.notification-title {
+  font-size: 0.78rem;
+  padding: 5px 10px 2px;
+  color: #e6edf3;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Montserrat", sans-serif;
 }
 
 .notification-desc {
-  font-size: 0.9rem;
-  padding-top: 3px;
-  padding-left: 12px;
-  color: #f7f3ff;
+  font-size: 0.7rem;
+  padding: 0 10px 8px;
+  color: #8b949e;
   font-weight: 400;
   display: flex;
   align-items: center;
@@ -56,31 +53,35 @@
   display: flex;
   align-items: center;
   position: absolute;
-  top: 5px;
-  right: 10px;
+  top: 4px;
+  right: 8px;
+  padding: 2px;
+  border-radius: 3px;
+  transition: background 0.15s;
+}
+
+.notification-close:hover {
+  background: #21262d;
 }
 
 .notification-close svg {
-  width: 12px;
-  height: 12px;
-  color: #d4dadf;
-  transition: fill 0.2s;
+  width: 10px;
+  height: 10px;
+  color: #484f58;
 }
 
 .notification-close:hover svg {
-  color: #ff5c5c;
+  color: #f85149;
 }
 
 .notification-progress {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 3px;
-  background-color: #c2c2c2;
+  height: 2px;
+  background-color: #58a6ff;
   width: 0%;
   animation: fillBar 6s linear forwards;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
 }
 
 @keyframes fillBar {
@@ -94,10 +95,10 @@
 
 #notification-container {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 26px;
+  right: 14px;
   display: flex;
   flex-direction: column-reverse;
-  gap: 12px;
+  gap: 8px;
   z-index: 1000;
 }
