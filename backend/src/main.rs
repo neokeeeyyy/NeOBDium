@@ -62,8 +62,8 @@ fn try_load_vpic_database(
         "[LOAD_VPIC_DATABASE] Loading `vpic.sqlite` - decompressing data from `vpic.sqlite.xz"
     );
     let _ = window.emit("display-notification", FrontendNotification {
-        title: "VIN Decoder Database",
-        description: "Loading local VIN (VPIC) database (SQLite) for the first and only time - please wait before using the VIN decoder."
+        title: "Base de Datos VIN (VPIC)",
+        description: "Descomprimiendo base de datos VIN (VPIC) por primera y única vez - espere antes de usar el decodificador VIN."
     });
 
     // io files
@@ -77,13 +77,13 @@ fn try_load_vpic_database(
     if copy(&mut decompressor, &mut writer).is_ok() {
         println!("[LOAD_VPIC_DATABASE] Successfully decompressed and loaded `vpic.sqlite.xz` into `vpic.sqlite`");
         let _ = window.emit("display-notification", FrontendNotification {
-            title: "VIN Decoder Database",
-            description: "Successfully loaded local VIN (VPIC) database - you may now decode VINs as expected."
+            title: "Base de Datos VIN (VPIC)",
+            description: "Base de datos VIN (VPIC) cargada correctamente - ya puede decodificar VINs."
         });
     } else {
         let _ = window.emit("display-notification", FrontendNotification {
-            title: "VIN Deocder Database",
-            description: "Failed loading database for the first time - VIN decoding may not function properly. Try restarting the app or opening a issue on the GitHub (github.com/provrb/obdium/issues/."
+            title: "Base de Datos VIN (VPIC)",
+            description: "Error al cargar la base de datos VIN - el decodificador VIN puede no funcionar correctamente. Reinicie la aplicación o reporte el problema en el repositorio."
         });
     }
 
@@ -183,14 +183,47 @@ fn main() {
                 let _ = try_load_vpic_database(&window_arc, db_path, xz_path);
 
                 // ensure code-descriptions and model-pids are in app_data_dir
+                let _ = window_arc.emit("display-notification", FrontendNotification {
+                    title: "Bases de Datos de Diagnóstico",
+                    description: "Cargando bases de datos de códigos de falla y PIDs específicos del vehículo por primera vez."
+                });
+
                 let code_desc_dest = app_data_dir.join("code-descriptions.sqlite");
                 if !code_desc_dest.exists() {
-                    let _ = std::fs::copy(&code_desc_src, &code_desc_dest);
+                    match std::fs::copy(&code_desc_src, &code_desc_dest) {
+                        Ok(_) => println!("[LOAD_DIAG_DBS] Copied `code-descriptions.sqlite` to app data dir."),
+                        Err(err) => {
+                            println!("[LOAD_DIAG_DBS] Failed to copy `code-descriptions.sqlite`: {err}");
+                            let _ = window_arc.emit("display-notification", FrontendNotification {
+                                title: "Bases de Datos de Diagnóstico",
+                                description: "Error al cargar la base de datos de códigos de falla. La descripción de DTCs no estará disponible."
+                            });
+                        }
+                    }
+                } else {
+                    println!("[LOAD_DIAG_DBS] `code-descriptions.sqlite` already in app data dir.");
                 }
+
                 let mode22_pids_dest = app_data_dir.join("model-pids.sqlite");
                 if !mode22_pids_dest.exists() {
-                    let _ = std::fs::copy(&mode22_pids_src, &mode22_pids_dest);
+                    match std::fs::copy(&mode22_pids_src, &mode22_pids_dest) {
+                        Ok(_) => println!("[LOAD_DIAG_DBS] Copied `model-pids.sqlite` to app data dir."),
+                        Err(err) => {
+                            println!("[LOAD_DIAG_DBS] Failed to copy `model-pids.sqlite`: {err}");
+                            let _ = window_arc.emit("display-notification", FrontendNotification {
+                                title: "Bases de Datos de Diagnóstico",
+                                description: "Error al cargar la base de datos de PIDs Mode $22. Los PIDs específicos del vehículo no estarán disponibles."
+                            });
+                        }
+                    }
+                } else {
+                    println!("[LOAD_DIAG_DBS] `model-pids.sqlite` already in app data dir.");
                 }
+
+                let _ = window_arc.emit("display-notification", FrontendNotification {
+                    title: "Bases de Datos de Diagnóstico",
+                    description: "Bases de datos de diagnóstico cargadas correctamente."
+                });
             });
 
             Ok(())
