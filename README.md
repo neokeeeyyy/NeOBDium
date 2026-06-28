@@ -1,194 +1,200 @@
 ![AppImage](/docs/banner2.jpg)
 
-
 <div align="center">
-  <h1>OBDium</h1>
-  <b>Your open-source app for everything car diagnostics.</b>
-  <p><em>A Rust-based vehicle diagnostics tool designed to connect with ELM327 adapters, offering live OBD-II data, fault code analysis, and offline VIN decoding.</p></em>
-  
+  <h1>NeOBDium</h1>
+  <b>Diagnóstico vehicular profesional en español.</b>
+  <p><em>Fork en español de OBDium. Herramienta de diagnóstico vehicular basada en Rust que se conecta con adaptadores ELM327, ofreciendo datos OBD-II en vivo, análisis de códigos de falla y decodificación VIN offline.</p></em>
+
   <img src="https://img.shields.io/badge/version-1.5.1-blue" alt="Version">
   <img src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-blue" alt="Platform">
   <img src="https://img.shields.io/badge/license-GPL--3.0-purple" alt="License">
-  <img src="https://img.shields.io/github/downloads/provrb/obdium/total?color=brightgreen" alt="Total Downloads">
 
-   <a href="#about">About</a>
+   <a href="#acerca-de">Acerca de</a>
    ·
-   <a href="https://github.com/provrb/obdium/releases">Download</a>
+   <a href="#descargar">Descargar</a>
    ·
-   <a href="#quick-start">Quick Start</a>
+   <a href="#inicio-rápido">Inicio rápido</a>
    ·
-   <a href="https://provrb.github.io/obdium/">User Manual</a>
+   <a href="#compilar-desde-código">Compilar desde código</a>
    ·
-   <a href="https://ko-fi.com/provrb">Sponsor</a>
+   <a href="#contribuir">Contribuir</a>
 
 </div>
 
 <details>
-   <summary><b>Click to view app screenshots!</b></summary>
+   <summary><b>¡Haz clic para ver capturas de pantalla!</b></summary>
 
    ![connect-screen](/examples/connect-screen.png)
-   <p align="center"><em>Connection Screen - Not Connected</em></p>
+   <p align="center"><em>Pantalla de Conexión - No Conectado</em></p>
 
    ![connected-screen](/examples/connected-screen.png)
-   <p align="center"><em>Connection Screen - Connected</em></p>
+   <p align="center"><em>Pantalla de Conexión - Conectado</em></p>
 
    ![obd-overview](/examples/obd-overview-screen.png)
-   <p align="center"><em>OBD Overview Screen</em></p>
+   <p align="center"><em>Panel OBD</em></p>
 
    ![readiness-tests](/examples/readiness-tests-screen.png)
-   <p align="center"><em>I/M Readiness Test Status</em></p>
+   <p align="center"><em>Estado de Pruebas I/M</em></p>
 
    ![supported-pids](/examples/supported-pids-screen.png)
-   <p align="center"><em>A List of Supported Pids</em></p>
+   <p align="center"><em>Lista de PIDs Soportados</em></p>
 
    ![vin-decoding](/examples/vin-decoding-screen.png)
-   <p align="center"><em>OBDium VIN Decoder</em></p>
+   <p align="center"><em>NeOBDium Decodificador VIN</em></p>
 
    ![settings](/examples/settings-screen.png)
-   <p align="center"><em>Preferences Screen - With Freeze Frame Active</em></p>
-  
+   <p align="center"><em>Pantalla de Preferencias</em></p>
+
 </details>
 
-## Table of Contents
+## Tabla de Contenidos
 
-- [About](#about)
-- [Features](#features)
-- [Download](#download)
-- [Quick Start](#quick-start) 
-- [Build from Source](#build-from-source)
-- [Implementation & Logic](#implementation-and-logic)
-- [Contributing](#contributing)
-- [License](#license)
+- [Acerca de](#acerca-de)
+- [Características](#características)
+- [Diferencias con OBDium](#diferencias-con-obdium)
+- [Descargar](#descargar)
+- [Inicio rápido](#inicio-rápido)
+- [Compilar desde código](#compilar-desde-código)
+- [Implementación y Lógica](#implementación-y-lógica)
+- [Contribuir](#contribuir)
+- [Licencia](#licencia)
+- [Créditos](#créditos)
 
-## About
+## Acerca de
 
-**OBDium** is a fast, modern and extensible Rust-based diagnostic tool for interfacing with OBD-II systems via ELM327 serial adapters fully offline. It provides live access to vehicle sensor data, in-depth diagnostics, and accurate VIN decoding without relying on external crates for critical parsing logic.
+**NeOBDium** es un fork en español de [OBDium](https://github.com/provrb/obdium), una herramienta de diagnóstico vehicular rápida, moderna y extensible basada en Rust. Se conecta con adaptadores ELM327 vía serie para acceder a datos de sensores en vivo, diagnósticos profundos y decodificación precisa de VIN, todo completamente offline y con la interfaz traducida al español.
 
-The goal with OBDium is to fill a gap in the ecosystem, providing the best free, open-source, and easy-to-use vehicle diagnostics tool.
+El objetivo de NeOBDium es llevar OBDium a la comunidad hispanohablante con una interfaz completamente traducida y un rediseño visual profesional orientado a usos técnicos.
 
-## Features
+## Características
 
-- **⚠️ View Trouble Codes:** Read diagnostic trouble codes, including **Powertrain, Body, Chassis,** and **Network** alongside a description
-- **🧠 Live Vehicle Metrics:** Reads and decodes various OBD-II PIDs (engine, fuel, air, exhaust, diagnostics, etc.) with plans for manufacturer specific PIDs soon
-- **🔎 Advanced VIN Decoding:** In-depth VIN decoding using a custom parser and SQLite-backed lookups based off of the NHTSA's VPIC MSSQL database
-- **🧪 I/M Readiness Tests:** Verify that your car's emissions systems are functioning properly for both compression and spark ignition engines
-- **📱 Modern GUI:** No more ugly and outdated native applications. Developed with modern web development technologies using Tauri with JS/HTML/CSS
-- **🖥️ Cross-platform:** Available on macOS, Windows 10 and 11, and Linux
+- **Códigos de Error:** Lee códigos de diagnóstico de fallas (DTC) de **Powertrain, Carrocería, Chasis** y **Red** con descripción incluida.
+- **Métricas en Vivo:** Lee y decodifica varios PIDs OBD-II (motor, combustible, aire, escape, diagnósticos, etc.).
+- **Decodificación VIN Avanzada:** Decodificación detallada del VIN usando un parser personalizado y búsquedas SQLite basadas en la base de datos VPIC de la NHTSA.
+- **Pruebas I/M:** Verifica que los sistemas de emisiones de tu vehículo funcionen correctamente.
+- **Interfaz Moderna:** Desarrollada con Tauri + JS/HTML/CSS. Interfaz profesional en modo oscuro con tipografía JetBrains Mono.
+- **Multiplataforma:** Disponible para macOS, Windows 10/11 y Linux.
+- **Modo Demo:** Simula datos OBD-II en vivo sin necesidad de un vehículo real.
 
-## Download
-[You can download the latest release here.](https://github.com/provrb/obdium/releases)
+## Diferencias con OBDium
 
-## Quick Start
-For a full user manual, view the docs [here.](https://provrb.github.io/obdium/)
+- **Completamente en español:** Interfaz de usuario, notificaciones, etiquetas y documentación traducidas al español.
+- **Rediseño UI/UX profesional:** Nueva paleta de colores, tipografía JetBrains Mono, layout compacto y aspecto de herramienta de diagnóstico profesional.
+- **Compatibilidad con Void Linux:** Workflow de CI para compilar en Void Linux vía GitHub Actions.
+- **Adaptado para la comunidad hispanohablante.**
 
-### Connecting to a vehicle
+## Descargar
 
-1. Run the application
-2. Connect your ELM327 adapter to your vehicles OBD-II port and device
-3. Turn on your ignition or start your vehicle
-4. Navigate to the **Connection** panel:
-   - Select your serial port. If no serial ports appear, you can click the refresh button to reload and rediscover serial ports
-   - Optionally change or leave the `OBD-II Protocol` and `Baud Rate` settings as is
-5. Click **Connect** and wait for the notification telling you the connection was established
+Dirígete a la [sección de releases](https://github.com/neokeeeyyy/NeOBDium/releases) para descargar la última versión.
 
-### Understanding each feature
+## Inicio rápido
 
-- OBD data will be recorded in the **OBD Dashboard**
-- View diagnostic trouble codes in the **DTC** panel.
-- View graphs for live data in the **Graphs** panel.
-- Decode a VIN to receive model-specific information in the **VIN Decoding** panel.
-- To stop tracking a metric, click on the card it's being displayed in, in the **OBD Dashboard**
-  - Resume tracking by clicking on it again at the very bottom of the dashboard.
-- Modify preferences like units, privacy, or startup settings in the **Settings** panel.
-- View an index of all PIDs in the **PID List** panel.
-- Add a custom PID to track in the **PID List** panel.
+Para una guía de usuario completa, consulta el [manual de usuario](https://provrb.github.io/obdium/) (en inglés, aplica igual).
 
-### Demo mode
-Demo mode is a unique feature that replays requests and simulates receiving a vehicle's live OBD-II data completely locally by reading an OBDium `requests.json` file. 
+### Conectarse a un vehículo
 
-You can record your own requests when connected to an actual vehicle by navigating to the **Settings** panel and toggling the **Record OBD Responses** option. By default, the file containing your recorded responses will be in a subfolder called `data` in the directory the app is ran in. You can change this by clicking the **Choose a File** button below.
+1. Ejecuta la aplicación.
+2. Conecta tu adaptador ELM327 al puerto OBD-II del vehículo y a tu computadora.
+3. Enciende el encendido o arranca el vehículo.
+4. Ve al panel **Conexión**:
+   - Selecciona tu puerto serie. Si no aparecen puertos, haz clic en el botón de refrescar.
+   - Opcionalmente cambia el protocolo OBD-II y la velocidad de transmisión.
+5. Haz clic en **Conectar** y espera la notificación de conexión exitosa.
 
-To replay already recorded requests simply:
-1. Download an existing recorded requests file. You can use another OBDium users requests file or use the one [here](https://github.com/provrb/obdium/blob/main/backend/data/requests.json)
-   - You can also share your vehicles recorded requests for people from the community to use!
-2. Drag and drop the file into your data directory
-   - This allows you to use your own recorded requests from your vehicle at a later time without having to be hooked up
-3. Navigate to the **Connection** panel
-4. Select "DEMO MODE" under the serial port dropdown
-5. Click 'Connect'
+### Usar cada función
 
-Data will start popping up and simulate a real vehicle.
+- Los datos OBD se registran en el **Panel OBD**.
+- Revisa códigos de falla en el panel **Códigos de Error**.
+- Visualiza datos en vivo en los **Gráficos**.
+- Decodifica un VIN en el panel **Decodificación de VIN**.
+- Para dejar de rastrear una métrica, haz clic en su tarjeta en el **Panel OBD**; haz clic de nuevo para reanudar.
+- Modifica preferencias en el panel **Preferencias**.
+- Explora el índice de PIDs en **Ver PIDs**.
+- Agrega PIDs personalizados desde **Ver PIDs**.
 
-## Build from Source
-Instructions on how to download the source code and build the application manually. 
+### Modo Demo
+
+El modo demo reproduce respuestas grabadas para simular datos OBD-II en vivo sin vehículo.
+
+Para activarlo:
+1. Descarga un archivo de respuestas grabadas (como el [requests.json original](https://github.com/provrb/obdium/blob/main/backend/data/requests.json)).
+2. Colócalo en la carpeta `data`.
+3. Ve a **Conexión**, selecciona **MODO DEMO** en el puerto serie.
+4. Haz clic en **Conectar**.
+
+## Compilar desde código
 
 <details>
-   <summary><b>Command-Line Installation</b></summary>
+   <summary><b>Instrucciones de compilación</b></summary>
 
+### Requisitos previos
 
-   1. **Install Rust**  
-      Download and install from [rust-lang.org](https://www.rust-lang.org/tools/install).
+1. **Instalar Rust** desde [rust-lang.org](https://www.rust-lang.org/tools/install).
 
-   2. **Install Tauri**
+2. **Instalar Tauri CLI:**
+   ```sh
+   cargo install tauri-cli --version "^2.0.0"
+   ```
 
-      ```sh
-      cargo install tauri-cli --version "^2.0.0"
-      ```
+3. **Clonar el repositorio:**
+   ```sh
+   git clone https://github.com/neokeeeyyy/NeOBDium.git
+   cd NeOBDium
+   ```
 
-   3. **Clone the repository**
+### Compilar
 
-      ```sh
-      git clone https://github.com/provrb/obdium.git
-      cd obdium
-      ```
+```sh
+cargo tauri build
+```
 
-   With this you can:
+Los binarios se ubicarán en:
+- Linux: `backend/target/release/bundle/deb`, `rpm` o `appimage`
+- Windows: `backend/target/release/bundle/msi` o `nsis`
+- macOS: `backend/target/release/bundle/dmg`
 
-   1. **Build the project**
+### Modo desarrollo
 
-      ```sh
-      cargo tauri build
-      ```
+```sh
+cargo tauri dev --no-watch
+```
 
-   2. **Find the application**:
+### Compilar en Void Linux
 
-      - The application binary will be located in: `backend/target/release`
-      - Windows' MSI and NSIS installers will be located in: `backend/target/release/bundle`
-      - Linux bundles will be located in:
-         - `backend/target/release/bundle/deb`
-         - `backend/target/release/bundle/rpm`
-         - `backend/target/release/bundle/appimage`
+```sh
+sudo xbps-install -S rust cargo libwebkit2gtk41-devel gtk+3-devel glib-devel cairo-devel pango-devel gdk-pixbuf-devel librsvg-devel libsoup3-devel atk-devel
+cd backend
+cargo build --release
+```
 
-   OR
-
-   1. **Run the project in developer mode**
-
-      ```sh
-      cargo tauri dev --no-watch
-      ```
+También puedes usar el workflow de GitHub Actions incluido (`.github/workflows/build-void.yml`) para compilar automáticamente en Void Linux.
 
 </details>
 
-## Implementation and Logic
+## Implementación y Lógica
 
-This project required extensive research into concepts like ELM327, the OBD-II protocol, and response decoding. Below is a brief explanation of the implementation and logic behind OBDium.
-
+Este proyecto requirió investigación extensa sobre ELM327, el protocolo OBD-II y decodificación de respuestas. El crédito de la implementación original pertenece a [provrb](https://github.com/provrb).
 
 <details>
-   <summary><b>Implementation Logic</b></summary>
+   <summary><b>Lógica de implementación</b></summary>
 
-   1. **All real-time vehicle communication** is done through the [OBD](backend/src/obd.rs) struct. To initiate communication, OBDium establishes a serial port connection to the ELM327 adapter. Vehicle data is requested using PIDs (Parameter IDs) and service numbers. An example request to get the Engine Coolant Temperature would look as such: `0105`. A full list of standard OBD-II PIDs can be found [here](https://en.wikipedia.org/wiki/OBD-II_PIDs).
+   1. **Comunicación en tiempo real** a través del struct [OBD](backend/src/obd.rs). NeOBDium establece una conexión serie con el adaptador ELM327 y solicita datos usando PIDs. Por ejemplo, para obtener la temperatura del refrigerante del motor: `0105`.
 
-   2. **Responses** from the vehicle are returned as hexadecimal-encoded strings. In general, responses contain particular bytes: 'A' refers to the byte at index 0, which spans to 'E' at byte index 4. Finally, a specific equation is used alongside these special bytes (A, B, C, D, E) to calculate the expected result. See the implementation of the response logic at ['src/response.rs'](backend/src/response.rs). For Engine Coolant Temperature it would be `A - 40`.
+   2. **Respuestas** del vehículo en cadenas hexadecimales. Los bytes 'A' a 'E' se usan con ecuaciones específicas para calcular el resultado. Ver [response.rs](backend/src/response.rs). Para temperatura del refrigerante: `A - 40`.
 
-   3. For the **VIN parsing implementation**, I spent several hours reverse engineering the [National Highway Traffic Safety Administration’s Product Information Catalog Vehicle Listing (vPIC) MSSQL implementation](https://vpic.nhtsa.dot.gov/api/) to work with SQLite and Rust. Now, from just a simple VIN, the exact, make, model and year of that vehicle can be decoded, providing specific details like airbag locations, the number of engine cylinders, or if the vehicle comes equipped with traction control.
+   3. **Decodificación VIN**: Implementación propia basada en ingeniería inversa de la base de datos [vPIC de la NHTSA](https://vpic.nhtsa.dot.gov/api/), adaptada a SQLite y Rust.
 
-   For any questions about the implementation or logic behind OBDium, feel free to create a Discussion or open an Issue!
+   Para preguntas sobre la implementación, abre un Issue o Discussion en el repositorio.
 </details>
 
+## Contribuir
 
-## Contributing
-Please view the [CONTRIBUTING](CONTRIBUTING.md) file for more information.
+Las contribuciones son bienvenidas. Por favor revisa el archivo [CONTRIBUTING](CONTRIBUTING.md) para más información.
 
-## License
-This project is licensed under GPL-3.0. See [`LICENSE`](LICENSE) for details.
+## Licencia
+
+Este proyecto está licenciado bajo GPL-3.0. Ver [`LICENSE`](LICENSE) para más detalles.
+
+## Créditos
+
+NeOBDium es un fork de [OBDium](https://github.com/provrb/obdium) por [provrb](https://github.com/provrb). Todo el crédito del motor de diagnóstico original y la lógica OBD-II pertenece al proyecto original. Este fork se enfoca en la traducción al español y mejoras en la interfaz de usuario.
