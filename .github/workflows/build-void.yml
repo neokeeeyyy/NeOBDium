@@ -50,8 +50,15 @@ jobs:
       - name: install tauri-cli
         run: npm install -g @tauri-apps/cli
 
-      - name: build
-        run: tauri build
+      - name: build (deb + rpm)
+        run: tauri build --bundles deb,rpm
+        working-directory: ./backend
+        env:
+          TAURI_CLI_NO_DEVTOOLS: true
+
+      - name: build (appimage)
+        continue-on-error: true
+        run: tauri build --bundles appimage
         working-directory: ./backend
         env:
           TAURI_CLI_NO_DEVTOOLS: true
