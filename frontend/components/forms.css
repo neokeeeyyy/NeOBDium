@@ -7,20 +7,19 @@
 
 .search {
   font-size: 0.78rem;
-  background: #161b22;
-  border: 1px solid #21262d;
+  background: #252525;
+  border: 1px solid #3a3a3a;
   border-radius: 4px;
   padding: 4px 28px 4px 8px;
   width: 100%;
   height: 26px;
   outline: none;
-  color: #e6edf3;
-  font-family: "JetBrains Mono", monospace;
+  color: #d4d4d4;
   transition: border-color 0.15s;
 }
 
 .search:focus {
-  border-color: #58a6ff;
+  border-color: #0078d4;
 }
 
 .search-icon {
@@ -33,31 +32,30 @@
 }
 
 .search::placeholder {
-  color: #484f58;
+  color: #555555;
   opacity: 1;
 }
 
 .vin-input {
   font-size: 0.78rem;
-  background: #161b22;
-  border: 1px solid #30363d;
+  background: #252525;
+  border: 1px solid #3a3a3a;
   border-radius: 4px;
   padding: 4px 8px;
   width: 180px;
   height: 26px;
-  font-family: "JetBrains Mono", monospace;
   text-transform: uppercase;
   outline: none;
-  color: #e6edf3;
+  color: #d4d4d4;
   transition: border-color 0.15s;
 }
 
 .vin-input:focus {
-  border-color: #58a6ff;
+  border-color: #0078d4;
 }
 
 .vin-input::placeholder {
-  color: #484f58;
+  color: #555555;
   opacity: 1;
 }
 
@@ -82,8 +80,8 @@ input[type="file"] {
 }
 
 .graph-container {
-  background: #161b22;
-  border: 1px solid #21262d;
+  background: #252525;
+  border: 1px solid #3a3a3a;
   border-radius: 6px;
   padding: 4px 6px;
   display: flex;
@@ -100,13 +98,13 @@ input[type="file"] {
 }
 
 .graph-dropdown-toggle {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Segoe UI", sans-serif;
   width: 100%;
   padding: 4px 8px;
-  background: #161b22;
-  border: 1px solid #21262d;
+  background: #252525;
+  border: 1px solid #3a3a3a;
   border-radius: 4px;
-  color: #8b949e;
+  color: #999999;
   font-weight: 500;
   font-size: 0.72rem;
   cursor: pointer;
@@ -117,13 +115,7 @@ input[type="file"] {
 }
 
 .graph-dropdown-toggle:hover {
-  border-color: #58a6ff;
-}
-
-.graph-dropdown-toggle::after {
-  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="%23484f58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" height="12" viewBox="0 0 24 24" width="12"><path d="m6 9 6 6 6-6"/></svg>');
-  float: right;
-  margin-top: 1px;
+  border-color: #0078d4;
 }
 
 .graph-dropdown-menu {
@@ -131,8 +123,8 @@ input[type="file"] {
   margin: 2px 0 0;
   position: absolute;
   width: 100%;
-  background: #161b22;
-  border: 1px solid #30363d;
+  background: #252525;
+  border: 1px solid #3a3a3a;
   border-radius: 4px;
   display: none;
   z-index: 100;
@@ -144,37 +136,37 @@ input[type="file"] {
   font-weight: 500;
   font-size: 0.72rem;
   cursor: pointer;
-  color: #8b949e;
-  font-family: "JetBrains Mono", monospace;
+  color: #999999;
+  font-family: "Segoe UI", sans-serif;
   transition: background 0.1s;
 }
 
 .graph-dropdown-menu li:hover {
-  background: #1c2128;
-  color: #e6edf3;
+  background: #2a2a2a;
+  color: #d4d4d4;
 }
 
 .terminal-output {
-  background: #0d1117;
-  color: #e6edf3;
+  background: #1a1a1a;
+  color: #d4d4d4;
   padding: 10px;
   font-size: 0.75rem;
   width: 100%;
   height: 88%;
   border-radius: 4px;
   overflow: auto;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Cascadia Code", "Consolas", monospace;
   text-transform: uppercase;
-  border: 1px solid #21262d;
+  border: 1px solid #3a3a3a;
   line-height: 1.6;
 }
 
 .terminal-input {
-  background: #161b22;
-  color: #e6edf3;
-  border: 1px solid #21262d;
+  background: #252525;
+  color: #d4d4d4;
+  border: 1px solid #3a3a3a;
   outline: none;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Cascadia Code", "Consolas", monospace;
   font-size: 0.75rem;
   padding: 6px 10px;
   border-radius: 4px;
@@ -186,5 +178,5 @@ input[type="file"] {
 }
 
 .terminal-input:focus {
-  border-color: #58a6ff;
+  border-color: #0078d4;
 }

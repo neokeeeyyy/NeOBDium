@@ -19,11 +19,6 @@
     <link rel="stylesheet" href="components/sidebar.css" />
     <link rel="stylesheet" href="components/vin.css" />
     <link rel="stylesheet" href="components/buttons.css" />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
   </head>
 
   <body>
@@ -68,8 +63,8 @@
     <div class="sidebar">
       <button
         class="sidebar-button"
-data-tooltip="CONECTAR"
-         data-screen="connect-settings"
+        data-tooltip="CONECTAR"
+        data-screen="connect-settings"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -93,8 +88,8 @@ data-tooltip="CONECTAR"
       </button>
       <button
         class="sidebar-button"
-data-tooltip="DECODIFICAR VIN"
-         data-screen="vin"
+        data-tooltip="DECODIFICAR VIN"
+        data-screen="vin"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -116,8 +111,8 @@ data-tooltip="DECODIFICAR VIN"
       </button>
       <button
         class="sidebar-button"
-data-tooltip="PANEL OBD"
-         data-screen="dashboard"
+        data-tooltip="PANEL OBD"
+        data-screen="dashboard"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -136,8 +131,8 @@ data-tooltip="PANEL OBD"
       </button>
       <button
         class="sidebar-button"
-data-tooltip="CÓDIGOS DE ERROR"
-         data-screen="view-dtcs"
+        data-tooltip="CODIGOS DE ERROR"
+        data-screen="view-dtcs"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -159,8 +154,8 @@ data-tooltip="CÓDIGOS DE ERROR"
       </button>
       <button
         class="sidebar-button"
-data-tooltip="PRUEBAS I/M"
-         data-screen="readiness-tests"
+        data-tooltip="PRUEBAS I/M"
+        data-screen="readiness-tests"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -180,33 +175,10 @@ data-tooltip="PRUEBAS I/M"
           <path d="m9 14 2 2 4-4" />
         </svg>
       </button>
-      <!-- <button
-        class="sidebar-button"
-        data-tooltip="OBD TESTS"
-        data-screen="tests"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.9"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="sidebar-button-img"
-        >
-          <path
-            d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"
-          />
-          <path d="M6.453 15h11.094" />
-          <path d="M8.5 2h7" />
-        </svg>
-      </button> -->
       <button
         class="sidebar-button"
-data-tooltip="VER PIDS"
-         data-screen="edit"
+        data-tooltip="VER PIDS"
+        data-screen="edit"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -226,8 +198,8 @@ data-tooltip="VER PIDS"
       </button>
       <button
         class="sidebar-button"
-data-tooltip="VER GRÁFICOS"
-         data-screen="graphs"
+        data-tooltip="VER GRAFICOS"
+        data-screen="graphs"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -268,8 +240,8 @@ data-tooltip="VER GRÁFICOS"
       </button>
       <button
         class="sidebar-button"
-data-tooltip="AJUSTES"
-         data-screen="settings"
+        data-tooltip="AJUSTES"
+        data-screen="settings"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -315,10 +287,9 @@ data-tooltip="AJUSTES"
       </div>
 
       <div id="connect-settings" class="screen" style="display: none">
-        <div id="connect-header" class="screen-label">CONFIGURACIÓN DE CONEXIÓN</div>
-
+        <div class="screen-label">CONFIGURACION DE CONEXION</div>
         <div class="connection-details" id="connection-details">
-          SIN CONEXIÓN ESTABLECIDA
+          SIN CONEXION ESTABLECIDA
         </div>
 
         <div class="form-row">
@@ -329,10 +300,10 @@ data-tooltip="AJUSTES"
               id="protocol-selected"
               data-value="0"
             >
-              AUTOMÁTICO
+              AUTOMATICO
             </button>
             <ul class="dropdown-menu" id="protocol-menu">
-              <li data-value="0">AUTOMÁTICO</li>
+              <li data-value="0">AUTOMATICO</li>
               <li data-value="1">SAE J1850 PWM @41.6k</li>
               <li data-value="2">SAE J1850 VPW @10.4k</li>
               <li data-value="3">ISO 9141-2 (5 baud init)</li>
@@ -355,11 +326,10 @@ data-tooltip="AJUSTES"
                   height="17"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="#f3f3f2"
+                  stroke="#d4d4d4"
                   stroke-width="2.5"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="lucide lucide-refresh-cw-icon lucide-refresh-cw"
                 >
                   <path
                     d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"
@@ -412,320 +382,118 @@ data-tooltip="AJUSTES"
             <path d="M12 16v-4" />
             <path d="M12 8h.01" />
           </svg>
-          DESCUBRE Y SELECCIONA UN PUERTO SERIE Y LUEGO HAZ CLIC EN 'CONECTAR'
+          DESCUBRE Y SELECCIONA UN PUERTO SERIE Y LUEGO HAZ CLIC EN CONECTAR
         </div>
       </div>
 
       <div id="dashboard" class="screen" style="display: flex">
-        <div id="dashboard-header" class="screen-label">PANEL OBD</div>
-        <div class="connection-details">MONITOREA VALORES OBD DEL VEHÍCULO EN TIEMPO REAL</div>
+        <div class="screen-label">PANEL OBD</div>
+        <div class="connection-details">MONITOREA VALORES OBD DEL VEHICULO EN TIEMPO REAL</div>
         <div class="button-row" style="margin-bottom: 8px">
           <div class="btn" id="obd-pause">PAUSAR</div>
           <div class="btn" id="obd-clear">LIMPIAR</div>
         </div>
-
         <div class="grid" id="dashboard-cards" style="display: grid"></div>
       </div>
 
       <div id="view-dtcs" class="screen" style="display: none">
-        <div id="dtc-header" class="screen-label">CÓDIGOS DE ERROR</div>
-        <div class="connection-details">VER CÓDIGOS DTC DETALLADOS, LIMPIAR CÓDIGOS O EXPORTAR A ARCHIVO</div>
+        <div class="screen-label">CODIGOS DE ERROR</div>
+        <div class="connection-details">VER CODIGOS DTC DETALLADOS, LIMPIAR CODIGOS O EXPORTAR A ARCHIVO</div>
         <div class="button-row">
-          <div
-            class="btn"
-            id="dtc-scan-button"
-            style="width: 105px"
-          >
-            ESCANEAR
-          </div>
-          <div
-            class="btn"
-            id="dtc-clear-button"
-            style="
-              position: relative;
-              overflow: hidden;
-            "
-          >
+          <div class="btn" id="dtc-scan-button" style="width: 105px">ESCANEAR</div>
+          <div class="btn" id="dtc-clear-button" style="position: relative; overflow: hidden">
             <span style="z-index: 5">LIMPIAR</span>
             <div class="btn-hold-fill" id="btn-hold-fill"></div>
           </div>
-          <div
-            class="btn"
-            id="dtc-log-file"
-            style="width: 105px"
-          >
-           EXPORTAR 
-          </div>
+          <div class="btn" id="dtc-log-file" style="width: 105px">EXPORTAR</div>
         </div>
-
-        <div
-          id="dtc-list"
-          class="info-row-scroll"
-          style="margin-top: 10px"
-        ></div>
+        <div id="dtc-list" class="info-row-scroll" style="margin-top: 10px"></div>
       </div>
 
-      <!-- <div id="tests" class="screen" style="display: none"></div> -->
-
       <div id="edit" class="screen" style="display: none">
-        <div id="pid-list-header" class="screen-label">VER PIDS (0)</div>
-        <div class="connection-details">AGREGAR Y VER PIDS SOPORTADOS EN 'PANEL OBD'</div>
+        <div class="screen-label">VER PIDS (0)</div>
+        <div class="connection-details">AGREGAR Y VER PIDS SOPORTADOS EN PANEL OBD</div>
         <div class="button-row" style="margin-bottom: 8px">
-          <div
-            class="btn"
-            id="pid-add"
-            style="width: 105px"
-          >
-            AGREGAR PID
-          </div>
+          <div class="btn" id="pid-add" style="width: 105px">AGREGAR PID</div>
         </div>
-        <div
-          id="pid-list"
-          class="info-row-scroll"
-          style="margin-top: -10px"
-        ></div>
+        <div id="pid-list" class="info-row-scroll" style="margin-top: -10px"></div>
       </div>
 
       <div id="readiness-tests" class="screen" style="display: none">
-        <div id="readiness-tests-header" class="screen-label">
-          PRUEBAS I/M
-        </div>
-        <div class="connection-details">VER ESTADO DE LAS PRUEBAS DE INSPECCIÓN/MANTENIMIENTO</div>
+        <div class="screen-label">PRUEBAS I/M</div>
+        <div class="connection-details">VER ESTADO DE LAS PRUEBAS DE INSPECCION/MANTENIMIENTO</div>
         <div class="button-row">
-          <button
-            id="readiness-test-refresh"
-            class="btn"
-            style="width: 105px"
-          >
-            ACTUALIZAR
-          </button>
-          <button
-            id="readiness-test-export"
-            class="btn"
-            style="width: 105px"
-          >
-            EXPORTAR
-          </button>
+          <button id="readiness-test-refresh" class="btn" style="width: 105px">ACTUALIZAR</button>
+          <button id="readiness-test-export" class="btn" style="width: 105px">EXPORTAR</button>
         </div>
-        <div
-          id="readiness-tests-list"
-          class="info-row-scroll"
-          style="margin-top: 10px"
-        ></div>
+        <div id="readiness-tests-list" class="info-row-scroll" style="margin-top: 10px"></div>
       </div>
 
       <div id="graphs" class="screen" style="display: none">
-        <div id="graphs-header" class="screen-label">GRÁFICOS</div>
+        <div class="screen-label">GRAFICOS</div>
         <div class="connection-details">VISUALIZA VARIOS DATOS OBD A LO LARGO DEL TIEMPO</div>
 
         <div class="graphs" style="padding-right: 10px">
-          <div
-            class="graph-dropdown"
-            style="flex: 0 0 100%; border-radius: 3px; width: 100%"
-          >
-            <button
-              class="graph-dropdown-toggle"
-              id="chart1-selected"
-              data-value="0"
-              style="width: 100%; box-shadow: none"
-            >
+          <div class="graph-dropdown" style="flex: 0 0 100%; border-radius: 3px; width: 100%">
+            <button class="graph-dropdown-toggle" id="chart1-selected" data-value="0" style="width: 100%; box-shadow: none">
               NINGUNO SELECCIONADO
             </button>
             <ul class="graph-dropdown-menu" id="chart1-menu"></ul>
           </div>
 
-          <div
-            class="graph-dropdown"
-            style="flex: 0 0 100%; border-radius: 3px; width: 100%"
-          >
-            <button
-              class="graph-dropdown-toggle"
-              id="chart2-selected"
-              data-value="0"
-              style="width: 100%; box-shadow: none"
-            >
+          <div class="graph-dropdown" style="flex: 0 0 100%; border-radius: 3px; width: 100%">
+            <button class="graph-dropdown-toggle" id="chart2-selected" data-value="0" style="width: 100%; box-shadow: none">
               NINGUNO SELECCIONADO
             </button>
-            <ul
-              class="graph-dropdown-menu"
-              id="chart2-menu"
-              style="width: 100%"
-            ></ul>
+            <ul class="graph-dropdown-menu" id="chart2-menu" style="width: 100%"></ul>
           </div>
 
-          <div
-            class="graph-container"
-            style="
-              width: 100%;
-              display: flex;
-              margin-top: -23px;
-              border-radius: 3px;
-            "
-          >
-            <div
-              style="
-                flex: 1;
-                width: 80%;
-                height: 100%;
-                aspect-ratio: 2;
-                display: flex;
-                flex-direction: column;
-              "
-            >
-              <canvas
-                id="chart1"
-                style="width: auto !important; height: auto !important"
-              ></canvas>
+          <div class="graph-container" style="width: 100%; display: flex; margin-top: -23px; border-radius: 3px">
+            <div style="flex: 1; width: 80%; height: 100%; aspect-ratio: 2; display: flex; flex-direction: column">
+              <canvas id="chart1" style="width: auto !important; height: auto !important"></canvas>
             </div>
           </div>
 
-          <div
-            class="graph-container"
-            style="
-              width: 100%;
-              display: flex;
-              margin-top: -23px;
-              border-radius: 3px;
-            "
-          >
-            <div
-              style="
-                flex: 1;
-                width: 80%;
-                height: 100%;
-                aspect-ratio: 2;
-                display: flex;
-                flex-direction: column;
-              "
-            >
-              <canvas
-                id="chart2"
-                style="width: auto !important; height: auto !important"
-              ></canvas>
+          <div class="graph-container" style="width: 100%; display: flex; margin-top: -23px; border-radius: 3px">
+            <div style="flex: 1; width: 80%; height: 100%; aspect-ratio: 2; display: flex; flex-direction: column">
+              <canvas id="chart2" style="width: auto !important; height: auto !important"></canvas>
             </div>
           </div>
 
-          <div
-            class="graph-dropdown"
-            style="
-              flex: 0 0 100%;
-              border-radius: 3px;
-              width: 100%;
-              margin-top: -6px;
-            "
-          >
-            <button
-              class="graph-dropdown-toggle"
-              id="graph3-selected"
-              data-value="0"
-              style="width: 100%; box-shadow: none"
-            >
+          <div class="graph-dropdown" style="flex: 0 0 100%; border-radius: 3px; width: 100%; margin-top: -6px">
+            <button class="graph-dropdown-toggle" id="graph3-selected" data-value="0" style="width: 100%; box-shadow: none">
               NINGUNO SELECCIONADO
             </button>
-            <ul
-              class="graph-dropdown-menu"
-              id="chart3-menu"
-              style="width: 100%"
-            ></ul>
+            <ul class="graph-dropdown-menu" id="chart3-menu" style="width: 100%"></ul>
           </div>
 
-          <div
-            class="graph-dropdown"
-            style="
-              flex: 0 0 100%;
-              border-radius: 3px;
-              width: 100%;
-              margin-top: -6px;
-            "
-          >
-            <button
-              class="graph-dropdown-toggle"
-              id="graph4-selected"
-              data-value="0"
-              style="width: 100%; box-shadow: none"
-            >
+          <div class="graph-dropdown" style="flex: 0 0 100%; border-radius: 3px; width: 100%; margin-top: -6px">
+            <button class="graph-dropdown-toggle" id="graph4-selected" data-value="0" style="width: 100%; box-shadow: none">
               NINGUNO SELECCIONADO
             </button>
-            <ul
-              class="graph-dropdown-menu"
-              id="chart4-menu"
-              style="width: 100%"
-            ></ul>
+            <ul class="graph-dropdown-menu" id="chart4-menu" style="width: 100%"></ul>
           </div>
 
-          <div
-            class="graph-container"
-            style="
-              width: 100%;
-              display: flex;
-              margin-top: -23px;
-              border-radius: 3px;
-            "
-          >
-            <div
-              style="
-                flex: 1;
-                width: 80%;
-                height: 100%;
-                aspect-ratio: 2;
-                display: flex;
-                flex-direction: column;
-              "
-            >
-              <canvas
-                id="chart3"
-                style="width: auto !important; height: auto !important"
-              ></canvas>
+          <div class="graph-container" style="width: 100%; display: flex; margin-top: -23px; border-radius: 3px">
+            <div style="flex: 1; width: 80%; height: 100%; aspect-ratio: 2; display: flex; flex-direction: column">
+              <canvas id="chart3" style="width: auto !important; height: auto !important"></canvas>
             </div>
           </div>
 
-          <div
-            class="graph-container"
-            style="
-              width: 100%;
-              display: flex;
-              margin-top: -23px;
-              border-radius: 3px;
-            "
-          >
-            <div
-              style="
-                flex: 1;
-                width: 80%;
-                height: 100%;
-                aspect-ratio: 2;
-                display: flex;
-                flex-direction: column;
-              "
-            >
-              <canvas
-                id="chart4"
-                style="width: auto !important; height: auto !important"
-              ></canvas>
+          <div class="graph-container" style="width: 100%; display: flex; margin-top: -23px; border-radius: 3px">
+            <div style="flex: 1; width: 80%; height: 100%; aspect-ratio: 2; display: flex; flex-direction: column">
+              <canvas id="chart4" style="width: auto !important; height: auto !important"></canvas>
             </div>
           </div>
         </div>
       </div>
 
       <div id="vin" class="screen" style="display: none">
-        <div id="vin-decoding-header" class="screen-label">DECODIFICACIÓN DE VIN</div>
-        <div class="connection-details">INGRESA EL VIN PARA OBTENER DETALLES DEL VEHÍCULO</div>
+        <div class="screen-label">DECODIFICACION DE VIN</div>
+        <div class="connection-details">INGRESA EL VIN PARA OBTENER DETALLES DEL VEHICULO</div>
         <div class="button-row" style="margin-bottom: 8px">
-          <button
-            id="vin-export"
-            disabled
-            class="btn"
-            style="width: 140px"
-          >
-            EXPORTAR
-          </button>
-          <button
-            id="vin-decode-start"
-            class="btn"
-            style="width: 140px"
-          >
-            DECODIFICAR
-          </button>
+          <button id="vin-export" disabled class="btn" style="width: 140px">EXPORTAR</button>
+          <button id="vin-decode-start" class="btn" style="width: 140px">DECODIFICAR</button>
           <input class="vin-input" type="text" placeholder="Ingresar VIN" />
         </div>
         <div class="grid" id="vin-container"></div>
@@ -733,23 +501,18 @@ data-tooltip="AJUSTES"
 
       <div id="terminal" class="screen" style="display: none">
         <div class="screen-label">TERMINAL</div>
-        <div class="connection-details">ENVIAR COMANDOS VÍA ELM</div>
+        <div class="connection-details">ENVIAR COMANDOS VIA ELM</div>
         <div class="terminal-output" id="terminal-output"></div>
-        <input
-          type="text"
-          class="terminal-input"
-          value="> "
-          id="terminal-input"
-        />
+        <input type="text" class="terminal-input" value="> " id="terminal-input" />
       </div>
 
       <div id="settings" class="screen" style="display: none">
-        <div id="settings-header" class="screen-label">PREFERENCIAS</div>
+        <div class="screen-label">PREFERENCIAS</div>
         <div class="connection-details">CONFIGURAR AJUSTES GUARDADOS, OPCIONES Y PREFERENCIAS</div>
 
         <div style="display: flex; gap: 30px; flex-wrap: wrap">
           <div>
-            <div class="screen-label" style="margin-bottom: 4px; font-size: 0.8rem; font-weight: 600; color: #8b949e">REGISTRO</div>
+            <div class="screen-label" style="margin-bottom: 4px; font-size: 0.8rem; font-weight: 600; color: #999999">REGISTRO</div>
             <div style="display: flex; flex-direction: column; gap: 2px">
               <label class="switch">
                 <input type="checkbox" id="record-responses" disabled />
@@ -768,26 +531,24 @@ data-tooltip="AJUSTES"
               </label>
             </div>
             <div style="display: flex; align-items: center; gap: 8px; margin-top: 6px">
-              <label class="btn" id="log-file-button" style="width: 120px; margin-top: 0">
-                SELECCIONAR ARCHIVO
-              </label>
+              <label class="btn" id="log-file-button" style="width: 120px; margin-top: 0">SELECCIONAR ARCHIVO</label>
               <span class="settings-label" style="font-size: 0.65rem">RUTA DEL ARCHIVO</span>
             </div>
-            <div id="log-file-path" class="settings-label" style="font-size: 0.6rem; margin-top: 2px; color: #484f58"></div>
+            <div id="log-file-path" class="settings-label" style="font-size: 0.6rem; margin-top: 2px; color: #555555"></div>
             <input id="file-upload" type="file" />
           </div>
           <div>
-            <div class="screen-label" style="margin-bottom: 4px; font-size: 0.8rem; font-weight: 600; color: #8b949e">DIAGNÓSTICO</div>
+            <div class="screen-label" style="margin-bottom: 4px; font-size: 0.8rem; font-weight: 600; color: #999999">DIAGNOSTICO</div>
             <div style="display: flex; flex-direction: column; gap: 2px">
               <label class="switch">
                 <input type="checkbox" id="save-dtcs" />
                 <span class="slider"></span>
-                <span class="settings-label" style="margin-left: 8px">GUARDAR CÓDIGOS DE ERROR</span>
+                <span class="settings-label" style="margin-left: 8px">GUARDAR CODIGOS DE ERROR</span>
               </label>
               <label class="switch">
                 <input type="checkbox" id="auto-check-codes" />
                 <span class="slider"></span>
-                <span class="settings-label" style="margin-left: 8px">VERIF. CÓDIGOS AUTOM.</span>
+                <span class="settings-label" style="margin-left: 8px">VERIF. CODIGOS AUTOM.</span>
               </label>
               <label class="switch">
                 <input type="checkbox" id="use-freeze-frame" />
@@ -802,7 +563,7 @@ data-tooltip="AJUSTES"
             </div>
           </div>
           <div>
-            <div class="screen-label" style="margin-bottom: 4px; font-size: 0.8rem; font-weight: 600; color: #8b949e">PRIVACIDAD</div>
+            <div class="screen-label" style="margin-bottom: 4px; font-size: 0.8rem; font-weight: 600; color: #999999">PRIVACIDAD</div>
             <div style="display: flex; flex-direction: column; gap: 2px">
               <label class="switch">
                 <input type="checkbox" id="hide-vin" />
@@ -818,7 +579,7 @@ data-tooltip="AJUSTES"
           </div>
         </div>
 
-        <div class="screen-label" style="margin-top: 6px; margin-bottom: 2px; font-size: 0.9rem">CONVERSIÓN DE UNIDADES</div>
+        <div class="screen-label" style="margin-top: 6px; margin-bottom: 2px; font-size: 0.9rem">CONVERSION DE UNIDADES</div>
         <div style="display: flex; gap: 8px; flex-wrap: wrap">
           <div class="dropdown" style="width: 120px">
             <div class="settings-label" style="font-size: 0.65rem; margin-bottom: 1px">VELOCIDAD</div>
@@ -830,10 +591,10 @@ data-tooltip="AJUSTES"
           </div>
           <div class="dropdown" style="width: 120px">
             <div class="settings-label" style="font-size: 0.65rem; margin-bottom: 1px">DISTANCIA</div>
-            <button class="dropdown-toggle" data-target="distance" id="unit-preference">KILÓMETROS</button>
+            <button class="dropdown-toggle" data-target="distance" id="unit-preference">KILOMETROS</button>
             <ul class="dropdown-menu" id="dropdown-menu">
               <li data-value="Meters">METROS</li>
-              <li data-value="Kilometers">KILÓMETROS</li>
+              <li data-value="Kilometers">KILOMETROS</li>
               <li data-value="Miles">MILLAS</li>
               <li data-value="Feet">PIES</li>
             </ul>
@@ -855,7 +616,7 @@ data-tooltip="AJUSTES"
             </ul>
           </div>
           <div class="dropdown" style="width: 120px">
-            <div class="settings-label" style="font-size: 0.65rem; margin-bottom: 1px">PRESIÓN</div>
+            <div class="settings-label" style="font-size: 0.65rem; margin-bottom: 1px">PRESION</div>
             <button class="dropdown-toggle" data-target="pressure" id="unit-preference">KPA</button>
             <ul class="dropdown-menu" id="dropdown-menu">
               <li data-value="Pascal">PA</li>
@@ -896,8 +657,8 @@ data-tooltip="AJUSTES"
           datasets: [
             {
               data: [],
-              borderColor: "#f7f3ff",
-              borderWidth: 2,
+              borderColor: "#d4d4d4",
+              borderWidth: 1.5,
               fill: false,
               tension: 0.1,
             },
@@ -908,30 +669,26 @@ data-tooltip="AJUSTES"
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
-            legend: {
-              display: false,
-            },
-            title: {
-              display: false,
-            },
+            legend: { display: false },
+            title: { display: false },
           },
           scales: {
             x: {
               ticks: {
-                color: "#f7f3ff",
+                color: "#999999",
                 font: {
-                  family: "Montserrat, Arial, sans-serif",
-                  size: 12,
+                  family: "Segoe UI, sans-serif",
+                  size: 10,
                   weight: "normal",
                 },
               },
               title: {
                 display: true,
                 text: "",
-                color: "#f7f3ff",
+                color: "#999999",
                 font: {
-                  family: "Montserrat, Arial, sans-serif",
-                  size: 12,
+                  family: "Segoe UI, sans-serif",
+                  size: 10,
                   weight: "bold",
                 },
               },
@@ -939,29 +696,27 @@ data-tooltip="AJUSTES"
             y: {
               beginAtZero: true,
               ticks: {
-                color: "#f7f3ff",
+                color: "#999999",
                 font: {
-                  family: "Montserrat, Arial, sans-serif",
-                  size: 12,
+                  family: "Segoe UI, sans-serif",
+                  size: 10,
                   weight: "normal",
                 },
               },
               title: {
                 display: true,
                 text: "",
-                color: "#f7f3ff",
+                color: "#999999",
                 font: {
-                  family: "Montserrat, Arial, sans-serif",
-                  size: 12,
+                  family: "Segoe UI, sans-serif",
+                  size: 10,
                   weight: "bold",
                 },
               },
             },
           },
           elements: {
-            point: {
-              radius: 0,
-            },
+            point: { radius: 0 },
           },
         },
       });
@@ -978,8 +733,6 @@ data-tooltip="AJUSTES"
       });
     });
 
-    /// Search bar functionality for dashboard
-
     const searchInput = document.querySelector(".search");
 
     searchInput.addEventListener("input", () => {
@@ -987,14 +740,12 @@ data-tooltip="AJUSTES"
       const cards = document.querySelectorAll(".card");
       const rows = document.querySelectorAll(".info-row");
 
-      // Filter cards in dashboard
       cards.forEach((card) => {
         const title = card.querySelector("h3").textContent.toLowerCase();
         const match = title.includes(query);
         card.style.display = match ? "flex" : "none";
       });
 
-      // Filter PID rows in edit screen
       rows.forEach((row) => {
         const name = row.querySelector(".name").textContent.toLowerCase();
         const match = name.includes(query);
@@ -1005,25 +756,18 @@ data-tooltip="AJUSTES"
 
     const decodeVinBtn = document.getElementById("vin-decode-start");
     const vinInput = document.querySelector(".vin-input");
-    const vinExportBtn = document.getElementById("vin-export");
-    const vinLabel = document.getElementById("vin-full");
-    const vehicleName = document.getElementById("vehicle-title");
 
     decodeVinBtn.addEventListener("click", async function (event) {
       const query = vinInput.value.trim();
       if (query !== "") {
-        // request backend to decode vin
         await emit("decode-vin", query);
       }
     });
-
-    /// Toggle different screens when sidebar buttons are clicked
 
     const screens = document.querySelectorAll(".screen");
     const buttons = document.querySelectorAll(".sidebar-button");
 
     buttons.forEach((button) => {
-      // Default screen is dashboard
       if (button.dataset.screen == "dashboard") {
         button.classList.add("active-button");
       }
@@ -1040,13 +784,10 @@ data-tooltip="AJUSTES"
               : "none";
         });
 
-        // Show different background color for clicked button
         buttons.forEach((btn) => btn.classList.remove("active-button"));
         button.classList.add("active-button");
       });
     });
-
-    /// Clicking cards makes them not report data and dims them
 
     const dashboard = document.getElementById("dashboard-cards");
 
@@ -1055,7 +796,6 @@ data-tooltip="AJUSTES"
       if (!card) return;
 
       if (card.classList.contains("dimmed")) {
-        // undim and set to first element
         card.classList.remove("dimmed");
         dashboard.insertBefore(card, dashboard.firstChild);
       } else {
@@ -1064,16 +804,11 @@ data-tooltip="AJUSTES"
       }
     });
 
-    /// Refresh serial ports
-
     const refreshButton = document.getElementById("refresh-serial-ports");
     const refreshIcon = refreshButton.querySelector("svg");
 
-    const demoModePortOption = document.createElement("li");
-
     refreshButton.addEventListener("click", () => {
       refreshIcon.classList.add("spinning");
-
       emit("get-serial-ports");
     });
 

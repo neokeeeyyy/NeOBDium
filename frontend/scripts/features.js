@@ -22,13 +22,10 @@ export function clearDtcs() {
     return;
   }
 
-  // clear codes
   emit("clear-dtcs");
   dtcHeader.textContent = "CÓDIGOS DE ERROR (0)";
   dtcList.innerHTML = ``;
 
-  // get permanant codes
-  // (codes that remain even after being cleared)
   emit("get-dtcs");
 }
 
@@ -96,8 +93,6 @@ export function clearObdView() {
 
 export async function addGraphDropdownOption(pid, name, unit, equation) {
   if (!unit.trim() && !equation.trim()) {
-    // likely a statement or cannot be represented as a draph (enum)
-    // e,g: dtc's, fuel system status
     return;
   }
 
@@ -117,15 +112,13 @@ export async function addGraphDropdownOption(pid, name, unit, equation) {
 
     dropDownMenu.appendChild(pidOption);
 
-    // track click of dropdown menu
     pidOption.addEventListener("click", () => {
-      // switch graph metrics
       trackGraph(graphId, name, unit);
     });
   }
 }
 
-const activeTrackers = new Map(); // graphId -> cleanupFn
+const activeTrackers = new Map();
 
 export async function trackGraph(graphId, name, unit) {
   if (activeTrackers.has(graphId)) {
@@ -136,7 +129,6 @@ export async function trackGraph(graphId, name, unit) {
   const graph = Chart.getChart(graphId);
   if (!graph) return;
 
-  // Reset graph data
   graph.data.labels = [];
   graph.data.datasets.forEach((dataset) => {
     dataset.data = [];
@@ -248,8 +240,6 @@ export function addNotification(title, desc) {
 
   container.appendChild(notification);
 
-  // if there are more than 3 notifications present
-  // remove the bottom one
   if (container.children.length > 3) {
     removeNotification(container.children[0]);
   }
@@ -258,7 +248,6 @@ export function addNotification(title, desc) {
 }
 
 export function listenExpandPID(pidGroup) {
-  // Add expand/collapse event listener
   const row = pidGroup.querySelector(".info-row");
   const details = pidGroup.querySelector(".pid-details");
 
@@ -403,7 +392,6 @@ export function addCustomPIDRow() {
   );
 
   function isValidPID() {
-    // mode, pid, equation, unit, pid name must all be filled out
     const mode = modeInput.value.trim();
     const pid = pidInput.value.trim();
     const equation = equationInput.value.trim().toUpperCase();
@@ -441,7 +429,6 @@ export function addCustomPIDRow() {
     const commandValue = commandDiv.textContent.trim();
     const nameValue = nameInput.value.trim();
 
-    // tell the backend to track the new custom pid
     let customPid = {
       mode: modeValue,
       pid: pidValue,

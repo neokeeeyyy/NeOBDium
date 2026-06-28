@@ -20,7 +20,7 @@
 .graphs::-webkit-scrollbar-thumb,
 .terminal-output::-webkit-scrollbar-thumb,
 .info-row-scroll::-webkit-scrollbar-thumb {
-  background-color: #30363d;
+  background-color: #3a3a3a;
   border-radius: 3px;
   border: none;
 }
@@ -30,5 +30,5 @@
 .graphs::-webkit-scrollbar-thumb:hover,
 .terminal-output::-webkit-scrollbar-thumb:hover,
 .info-row-scroll::-webkit-scrollbar-thumb:hover {
-  background-color: #484f58;
+  background-color: #505050;
 }

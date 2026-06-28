@@ -27,13 +27,10 @@ listen("update-card", (event) => {
 
   if (window.obdViewPaused) return;
 
-  // create card if it doesnt exist
   if (!exists) {
     const container = document.querySelector(".grid");
     if (!container) return;
 
-    // create the card
-    // has a header, value, and then unit
     const card = document.createElement("div");
     const h3 = document.createElement("h3");
     const valueDiv = document.createElement("div");
@@ -47,18 +44,14 @@ listen("update-card", (event) => {
     unitSpan.textContent =
       event.payload.unit.toLowerCase() === "no data" ? "" : event.payload.unit;
 
-    // si la unidad es 'no data', significa que el escalar no tiene datos
-    // (ver documentación del backend), mostrar 'N/D'
     const valueText =
       event.payload.unit.toLowerCase() === "no data"
         ? "N/D"
         : event.payload.value.toString();
 
-    // add value and unit to one div to align horizontally
     valueDiv.appendChild(document.createTextNode(valueText + " "));
     valueDiv.appendChild(unitSpan);
 
-    // append elements to card
     card.appendChild(h3);
     card.appendChild(valueDiv);
 
@@ -68,7 +61,6 @@ listen("update-card", (event) => {
   }
 
   cards.forEach((card) => {
-    // Don't update card data.
     if (card.classList.contains("dimmed")) {
       return;
     }
@@ -101,7 +93,6 @@ listen("update-card", (event) => {
     }
   });
 
-  // update any graphs that might be using this
   emit("update-graphs", {
     name: event.payload.name,
     value: event.payload.value,
@@ -146,12 +137,10 @@ listen("connection-status", async (event) => {
     connectionIcon.src = "/assets/icons/connected.png";
     window.connected = true;
 
-    // Features only accessible in real mode
     if (serialPort !== "DEMO MODE") {
       recordResponses.disabled = false;
       replayResponses.disabled = false;
     } else
-      // show demo mode status
       demoStatus.style.display = "flex";
 
     connectButton.disabled = true;
@@ -266,7 +255,6 @@ listen("update-pids", (event) => {
     );
   }
 
-  // Increment results counter
   const header = document.getElementById("pid-list-header");
   if (header.textContent != "VER PIDS (" + pidList.children.length + ")") {
     addNotification("ÍNDICE DE PIDS", "Lista de IDs de parámetros soportados actualizada.");
@@ -287,7 +275,6 @@ listen("update-dtcs", (event) => {
 
   dtcHeader.textContent = "CÓDIGOS DE ERROR (" + dtcs.length + ")";
 
-  // clear dtc list
   dtcList.innerHTML = ``;
 
   for (const troubleCode of dtcs) {
@@ -304,7 +291,7 @@ listen("update-dtcs", (event) => {
           </div>
           <div class="name" style="display: inline-block; vertical-align: top;">
               <span class="name" id="dtc-name" style="font-size: 25px; font-weight: 700;">${troubleCode.name}</span>
-              <div class="name" id="dtc-location" style="color: #BDBDBD; font-size: 15px; margin-top: -5px; font-weight: 600;">
+              <div class="name" id="dtc-location" style="color: #999999; font-size: 15px; margin-top: -5px; font-weight: 600;">
               ${troubleCode.location}
               </div>
           </div>
@@ -317,7 +304,7 @@ listen("update-dtcs", (event) => {
           </svg>
           
           <div class="name" id="dtc-description"
-              style="position: absolute; color: #BDBDBD; left: 240px; top: 0; bottom: 0; max-width: 600px; overflow-wrap: break-word; display: flex; align-items: center; height: 100%;">
+              style="position: absolute; color: #999999; left: 240px; top: 0; bottom: 0; max-width: 600px; overflow-wrap: break-word; display: flex; align-items: center; height: 100%;">
               ${description}
           </div>
           `;
@@ -353,7 +340,6 @@ listen("update-serial-ports", (event) => {
   console.log("received serial ports:", event);
 
   for (const [port, baudRate] of event.payload) {
-    // append serial port connect option
     const portOption = document.createElement("li");
     portOption.textContent = port;
     portOption.dataset.value = port;
@@ -382,9 +368,9 @@ listen("update-readiness-tests", (event) => {
     testRow.className = "info-row";
     testRow.style = "justify-content: space-between;";
     testRow.innerHTML = `
-<div class="name" id="test-name" style="flex: 2; font-weight: 700; color: #f7f3ff;">PRUEBA: ${test.name}</div>
-    <div class="name" id="test-availability" style="flex: 1; font-size: 0.97rem; font-weight: 500; text-transform: uppercase; color: #d4dadf;">${test.available ? "COMPLETO" : "NO COMPLETO"}</div>
-      <div class="name" id="test-completeness" style="flex: 1; font-size: 0.97rem; font-weight: 500; text-transform: uppercase; color: #d4dadf;">${test.complete ? "LISTO" : "NO LISTO"}</div>
+<div class="name" id="test-name" style="flex: 2; font-weight: 700; color: #d4d4d4;">PRUEBA: ${test.name}</div>
+    <div class="name" id="test-availability" style="flex: 1; font-size: 0.97rem; font-weight: 500; text-transform: uppercase; color: #999999;">${test.available ? "COMPLETO" : "NO COMPLETO"}</div>
+      <div class="name" id="test-completeness" style="flex: 1; font-size: 0.97rem; font-weight: 500; text-transform: uppercase; color: #999999;">${test.complete ? "LISTO" : "NO LISTO"}</div>
 
     `;
 
@@ -398,7 +384,6 @@ listen("update-command-output", (event) => {
 
 const exportButton = document.getElementById("vin-export");
 
-// show vehicle info if no error
 listen("decode-vin-result", (event) => {
   const data = event.payload;
   addNotification("DECODIFICACIÓN DE VIN", data.error_msg);
@@ -410,7 +395,6 @@ listen("decode-vin-result", (event) => {
 
   container.innerHTML = "";
 
-  // show all fields
   for (const [key, value] of Object.entries(event.payload)) {
     if (key === "error_msg" || value == "N/A" || value == "-1") continue;
 
@@ -430,7 +414,6 @@ listen("decode-vin-result", (event) => {
     valueDiv.style.whiteSpace = "normal";
     valueDiv.style.maxWidth = "320px";
 
-    // append elements to card
     card.appendChild(h3);
     card.appendChild(valueDiv);
 

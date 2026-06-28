@@ -32,8 +32,6 @@ function importSettings() {
     settings.connectionConfig = window.connectionConfig;
   }
 
-  // read from connectionConfig
-  // if empty, we cannot connect
   if (settings.autoConnect && !window.connected && settings.connectionConfig) {
     connectElm(
       settings.connectionConfig.baudRate,
@@ -49,7 +47,6 @@ function importSettings() {
   window.unitPreferences = settings.unitPreferences;
   window.hideNotifications = settings.hideNotifications;
 
-  // show buttons depending on which are toggled
   document.getElementById("save-dtcs").checked = settings.saveDtcs;
   document.getElementById("auto-check-codes").checked = settings.autoCheckCodes;
   document.getElementById("hide-notifications").checked = settings.hideNotifications;
@@ -77,7 +74,6 @@ export async function saveUnitPreference(unitType, unit) {
   window.unitPreferences[unitType] = unit;
   emit("set-unit-preferences", window.unitPreferences);
 
-  // save setting
   let settings = JSON.parse(localStorage.getItem("userSettings"));
   if (!settings) settings = defaultUserSettings;
 
@@ -88,7 +84,6 @@ export async function saveUnitPreference(unitType, unit) {
 }
 
 export async function updateUnitConversionDropdowns() {
-  // update unit conversion dropdowns
   for (const [unitTypeKey, unitValue] of Object.entries(
     window.unitPreferences,
   )) {
@@ -112,16 +107,9 @@ export async function updateUnitConversionDropdowns() {
 }
 
 async function settingChange(event) {
-  // get existing settings
   let settings = JSON.parse(localStorage.getItem("userSettings"));
   if (!settings) settings = defaultUserSettings;
 
-  // settings to save to localStorage
-  // save dtcs
-  // auto check for codes
-  // auto connect startup
-  // show partial vin
-  // delete logs on exit
   const tId = event.target.id;
   const checked = event.target.checked;
 
@@ -133,7 +121,6 @@ async function settingChange(event) {
       settings.autoCheckCodes = checked;
       break;
     case "auto-connect":
-      // save connection config
       settings.autoConnect = checked;
       if (window.connectionConfig) {
         settings.connectionConfig = window.connectionConfig;
@@ -145,19 +132,13 @@ async function settingChange(event) {
     case "del-logs":
       settings.deleteLogsOnExit = checked;
       break;
-    // the rest will have the frontend send an event
-    // record response
-    // replay response
-    // use freeze frame
     case "record-responses":
-      // uncheck replay requests
       document.getElementById("replay-responses").checked = false;
       await new Promise((r) => setTimeout(r, 2000));
       emit("settings-changed", { tId: "replay-responses", checked: false });
       emit("settings-changed", { tId, checked, data: window.logFilePath });
       break;
     case "replay-responses":
-      // uncheck record requests
       document.getElementById("record-responses").checked = false;
       await new Promise((r) => setTimeout(r, 2000));
       emit("settings-changed", { tId: "record-responses", checked: false });
@@ -177,7 +158,6 @@ async function settingChange(event) {
 }
 
 window.addEventListener("DOMContentLoaded", async () => {
-  // sleep
   await new Promise((r) => setTimeout(r, 500));
 
   importSettings();

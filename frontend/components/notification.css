@@ -1,26 +1,25 @@
 .notification {
   position: relative;
-  background: #161b22;
-  color: #e6edf3;
+  background: #252525;
+  color: #d4d4d4;
   border-radius: 6px;
   width: 320px;
-  border: 1px solid #21262d;
+  border: 1px solid #3a3a3a;
   opacity: 1;
   transform: translateY(0);
   overflow: hidden;
   transition: opacity 0.2s ease, transform 0.2s ease, margin 0.2s ease;
-  font-family: "JetBrains Mono", monospace;
 }
 
 .notification-hint {
   padding: 3px 10px;
   font-size: 0.6rem;
-  color: #484f58;
+  color: #555555;
   font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #21262d;
+  border-bottom: 1px solid #3a3a3a;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -28,18 +27,17 @@
 .notification-title {
   font-size: 0.78rem;
   padding: 5px 10px 2px;
-  color: #e6edf3;
+  color: #d4d4d4;
   font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: "Montserrat", sans-serif;
 }
 
 .notification-desc {
   font-size: 0.7rem;
   padding: 0 10px 8px;
-  color: #8b949e;
+  color: #999999;
   font-weight: 400;
   display: flex;
   align-items: center;
@@ -61,17 +59,17 @@
 }
 
 .notification-close:hover {
-  background: #21262d;
+  background: #2a2a2a;
 }
 
 .notification-close svg {
   width: 10px;
   height: 10px;
-  color: #484f58;
+  color: #555555;
 }
 
 .notification-close:hover svg {
-  color: #f85149;
+  color: #f44747;
 }
 
 .notification-progress {
@@ -79,7 +77,7 @@
   bottom: 0;
   left: 0;
   height: 2px;
-  background-color: #58a6ff;
+  background-color: #0078d4;
   width: 0%;
   animation: fillBar 6s linear forwards;
 }

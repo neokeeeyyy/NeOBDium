@@ -7,15 +7,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #30363d;
-  background: #21262d;
-  color: #e6edf3;
+  border: 1px solid #3a3a3a;
+  background: #2a2a2a;
+  color: #d4d4d4;
   height: 26px;
   padding: 0 12px;
   margin-top: 6px;
   font-size: 0.72rem;
   font-weight: 600;
-  font-family: "JetBrains Mono", "Montserrat", monospace;
+  font-family: "Segoe UI", sans-serif;
   border-radius: 4px;
   cursor: pointer;
   transition: border-color 0.15s, background 0.15s;
@@ -28,48 +28,48 @@
 }
 
 .btn:hover {
-  border-color: #58a6ff;
-  background: #1c2128;
+  border-color: #0078d4;
+  background: #252525;
 }
 
 .btn:active {
-  background: #161b22;
+  background: #1a1a1a;
 }
 
 .btn:disabled {
-  border-color: #21262d;
-  background: #0d1117;
-  color: #484f58;
+  border-color: #3a3a3a;
+  background: #1a1a1a;
+  color: #555555;
   cursor: not-allowed;
   opacity: 0.5;
 }
 
 .btn.connect {
-  border-color: #238636;
-  background: #1a3d2b;
-  color: #3fb950;
+  border-color: #2d6a4f;
+  background: #1a3a2e;
+  color: #4ec9b0;
 }
 
 .btn.connect:hover {
-  border-color: #2ea043;
-  background: #1f4d33;
+  border-color: #4ec9b0;
+  background: #1f4d3d;
 }
 
 .btn.connect:disabled {
-  border-color: #1a3d2b;
-  background: #0d1117;
-  color: #1f4d33;
+  border-color: #1a3a2e;
+  background: #1a1a1a;
+  color: #1f4d3d;
 }
 
 .btn.disconnect {
-  border-color: #da3633;
-  background: #3d1a1a;
-  color: #f85149;
+  border-color: #8b3a3a;
+  background: #2d1a1a;
+  color: #f44747;
 }
 
 .btn.disconnect:hover {
-  border-color: #f85149;
-  background: #4d2020;
+  border-color: #f44747;
+  background: #3d2020;
 }
 
 .btn-hold-fill {
@@ -77,7 +77,7 @@
   top: 0;
   left: 0;
   height: 100%;
-  background: rgba(88, 166, 255, 0.15);
+  background: rgba(0, 120, 212, 0.15);
   width: 0%;
   transition: width 0s;
 }
@@ -105,21 +105,20 @@
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: #8b949e;
+  color: #999999;
   margin-bottom: 3px;
   display: block;
   letter-spacing: 0.04em;
-  font-family: "Montserrat", sans-serif;
 }
 
 .dropdown-toggle {
-  font-family: "JetBrains Mono", "Montserrat", monospace;
+  font-family: "Segoe UI", sans-serif;
   width: 100%;
   padding: 5px 8px;
-  background: #161b22;
-  border: 1px solid #30363d;
+  background: #252525;
+  border: 1px solid #3a3a3a;
   border-radius: 4px;
-  color: #8b949e;
+  color: #999999;
   font-weight: 500;
   font-size: 0.75rem;
   cursor: pointer;
@@ -128,17 +127,17 @@
 }
 
 .dropdown-toggle:hover {
-  border-color: #58a6ff;
+  border-color: #0078d4;
 }
 
 .dropdown-locked-content {
-  font-family: "JetBrains Mono", "Montserrat", monospace;
+  font-family: "Segoe UI", sans-serif;
   width: 100%;
   padding: 5px 8px;
-  background: #0d1117;
-  border: 1px solid #21262d;
+  background: #1a1a1a;
+  border: 1px solid #3a3a3a;
   border-radius: 4px;
-  color: #484f58;
+  color: #555555;
   font-weight: 500;
   font-size: 0.75rem;
   cursor: not-allowed;
@@ -146,7 +145,7 @@
 }
 
 .dropdown-toggle::after {
-  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="%23484f58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" height="14" viewBox="0 0 24 24" width="14"><path d="m6 9 6 6 6-6"/></svg>');
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="%23555555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" height="14" viewBox="0 0 24 24" width="14"><path d="m6 9 6 6 6-6"/></svg>');
   float: right;
   margin-top: 1px;
   padding-right: 2px;
@@ -157,8 +156,8 @@
   margin: 2px 0 0;
   position: absolute;
   width: 100%;
-  background: #161b22;
-  border: 1px solid #30363d;
+  background: #252525;
+  border: 1px solid #3a3a3a;
   border-radius: 4px;
   display: none;
   z-index: 100;
@@ -170,14 +169,14 @@
   font-weight: 500;
   font-size: 0.75rem;
   cursor: pointer;
-  color: #8b949e;
-  font-family: "JetBrains Mono", "Montserrat", monospace;
+  color: #999999;
+  font-family: "Segoe UI", sans-serif;
   transition: background 0.1s;
 }
 
 .dropdown-menu li:hover {
-  background: #1c2128;
-  color: #e6edf3;
+  background: #2a2a2a;
+  color: #d4d4d4;
 }
 
 .arrow-icon {
@@ -221,12 +220,11 @@
 }
 
 .settings-label {
-  color: #8b949e;
+  color: #999999;
   font-weight: 500;
   font-size: 0.78rem;
   display: flex;
   align-items: center;
-  font-family: "Montserrat", sans-serif;
   white-space: nowrap;
 }
 
@@ -237,10 +235,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: #21262d;
+  background: #2a2a2a;
   transition: background 0.2s;
   border-radius: 16px;
-  border: 1px solid #30363d;
+  border: 1px solid #3a3a3a;
 }
 
 .slider::before {
@@ -250,28 +248,28 @@
   width: 10px;
   left: 2px;
   bottom: 2px;
-  background: #484f58;
+  background: #555555;
   transition: 0.2s;
   border-radius: 50%;
 }
 
 input:checked + .slider {
-  background: #1f4d33;
-  border-color: #238636;
+  background: #1a3a2e;
+  border-color: #2d6a4f;
 }
 
 input:checked + .slider::before {
   transform: translateX(16px);
-  background: #3fb950;
+  background: #4ec9b0;
 }
 
 input:disabled + .slider {
-  background: #0d1117;
-  border-color: #21262d;
+  background: #1a1a1a;
+  border-color: #3a3a3a;
   cursor: not-allowed;
   opacity: 0.4;
 }
 
 input:disabled + .slider::before {
-  background: #21262d;
+  background: #2a2a2a;
 }

@@ -1,5 +1,5 @@
 .pid-container {
-  border: 1px solid #21262d;
+  border: 1px solid #3a3a3a;
   border-radius: 4px;
   margin-bottom: 3px;
   overflow: hidden;
@@ -7,11 +7,11 @@
 }
 
 .pid-container:hover {
-  border-color: #30363d;
+  border-color: #3a3a3a;
 }
 
 .info-row {
-  background: #161b22;
+  background: #252525;
   padding: 5px 8px;
   display: flex;
   align-items: center;
@@ -21,35 +21,33 @@
 }
 
 .info-row:hover {
-  background: #1c2128;
+  background: #2a2a2a;
 }
 
 .info-row .name {
   font-size: 0.75rem;
   font-weight: 500;
   padding-left: 6px;
-  color: #e6edf3;
-  font-family: "JetBrains Mono", monospace;
+  color: #d4d4d4;
 }
 
 .info-row input.name {
   background: transparent;
   border: none;
-  border-bottom: 1px solid #30363d;
+  border-bottom: 1px solid #3a3a3a;
   outline: none;
-  color: #e6edf3;
+  color: #d4d4d4;
   font-size: 0.75rem;
-  font-family: "JetBrains Mono", monospace;
   width: 100%;
   padding: 2px 4px;
 }
 
 .info-row input.name:focus {
-  border-bottom-color: #58a6ff;
+  border-bottom-color: #0078d4;
 }
 
 .info-row.expanded {
-  border-bottom: 1px solid #21262d;
+  border-bottom: 1px solid #3a3a3a;
 }
 
 .info-row.expanded .arrow-icon {
@@ -59,7 +57,7 @@
 .pid-details {
   height: 0;
   overflow: hidden;
-  background: #161b22;
+  background: #252525;
   transition: height 0.25s ease;
 }
 
@@ -80,33 +78,31 @@
 }
 
 .pid-column input.pid-value {
-  background: #0d1117;
-  border: 1px solid #21262d;
+  background: #1a1a1a;
+  border: 1px solid #3a3a3a;
   border-radius: 3px;
   outline: none;
   width: 72px;
   padding: 2px 6px;
-  color: #e6edf3;
+  color: #d4d4d4;
   font-size: 0.7rem;
-  font-family: "JetBrains Mono", monospace;
   transition: border-color 0.15s;
 }
 
 .pid-column input.pid-value:focus {
-  border-color: #58a6ff;
+  border-color: #0078d4;
 }
 
 .pid-button {
   margin-top: 6px;
   height: 20px;
   padding: 0 10px;
-  background: #21262d;
-  border: 1px solid #30363d;
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
   border-radius: 3px;
-  color: #e6edf3;
+  color: #d4d4d4;
   font-weight: 500;
   font-size: 0.65rem;
-  font-family: "JetBrains Mono", monospace;
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -120,29 +116,27 @@
 }
 
 .pid-button:hover {
-  border-color: #58a6ff;
+  border-color: #0078d4;
 }
 
 .pid-button#remove-pid:hover {
-  border-color: #f85149;
+  border-color: #f44747;
 }
 
 .pid-label {
   font-weight: 500;
   font-size: 0.6rem;
-  color: #484f58;
+  color: #555555;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  font-family: "Montserrat", sans-serif;
   margin-bottom: 2px;
 }
 
 .pid-value {
   font-weight: 500;
   font-size: 0.7rem;
-  color: #e6edf3;
+  color: #d4d4d4;
   white-space: nowrap;
-  font-family: "JetBrains Mono", monospace;
 }
 
 .info-row-scroll {

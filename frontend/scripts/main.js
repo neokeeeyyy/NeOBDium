@@ -17,8 +17,6 @@ import {
 
 import { saveUnitPreference } from "./settings.js";
 
-// ELM connection
-// Changes when connection-status is fired
 let connected = false;
 window.connectionConfig = {
   serialPort: "0",
@@ -26,14 +24,12 @@ window.connectionConfig = {
   protocol: 0,
 };
 
-// Personal settings
 let hideVin = false;
 let deleteLogsOnExit = false;
 let autoCheckCodes = false;
 let autoSaveCodes = false;
 let logFilePath = "";
 
-// UI Components
 const dropdowns = document.querySelectorAll(".dropdown");
 const graphDropdowns = document.querySelectorAll(".graph-dropdown");
 const connectButton = document.getElementById("btn-connect");
@@ -42,12 +38,9 @@ const clearObdButton = document.getElementById("obd-clear");
 const pauseObdButton = document.getElementById("obd-pause");
 const dtcClearButton = document.getElementById("dtc-clear-button");
 
-// When frontend gets loaded
-// alert the backend with an event.
 window.addEventListener("DOMContentLoaded", () => {
   emit("frontend-loaded");
 
-  // load serial ports
   emit("get-serial-ports");
 
   emit("get-connection-status");
@@ -76,7 +69,6 @@ function handleDropdown(dropdown, toggleName, menuName) {
       menu.style.display = "none";
 
       if (toggle.id == "unit-preference" && window.unitPreferences) {
-        // change unit
         const unitType = toggle.getAttribute("data-target");
         const unit = toggle.dataset.value;
 
@@ -152,7 +144,6 @@ logFileButton.addEventListener("click", async () => {
     filters: [{ name: "JSON", extensions: ["json"] }],
   });
 
-  // set default path
   if (!window.logFilePath) {
     window.logFilePath = "./requests.json";
     return;
@@ -238,19 +229,6 @@ vinExportButton.addEventListener("click", async () => {
 
   await writeFile({ path, contents: JSON.stringify(vinObj, null, 2) });
 });
-
-// appWindow.listen("tauri://close-requested", async () => {
-//   // check if delete logs on exit setting is set
-//   if (window.deleteLogsOnExit && window.logFilePath) {
-//     try {
-//       removeFile(window.logFilePath);
-//     } catch (err) {
-//       console.error("Error when trying to delete log:", err);
-//     }
-//   }
-
-//   await appWindow.close();
-// });
 
 const input = document.getElementById("terminal-input");
 

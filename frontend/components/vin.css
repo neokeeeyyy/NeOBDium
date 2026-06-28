@@ -1,9 +1,8 @@
 .vin {
   font-size: 0.78rem;
-  color: #484f58;
+  color: #555555;
   margin-left: 1px;
   font-weight: 500;
-  font-family: "JetBrains Mono", monospace;
 }
 
 .car-image {
@@ -27,18 +26,16 @@
 
 .vin-label .label {
   font-size: 0.65rem;
-  color: #8b949e;
+  color: #999999;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  font-family: "Montserrat", sans-serif;
 }
 
 .vin-label .value {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #e6edf3;
+  color: #d4d4d4;
   margin-bottom: -4px;
   max-width: 360px;
-  font-family: "JetBrains Mono", monospace;
 }

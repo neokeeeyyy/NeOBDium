@@ -5,9 +5,9 @@
 }
 
 body {
-  font-family: "JetBrains Mono", "Montserrat", "SF Mono", "Fira Code", monospace;
-  background-color: #0d1117;
-  color: #e6edf3;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #1a1a1a;
+  color: #d4d4d4;
   display: flex;
   height: 100vh;
   overflow: hidden;
@@ -23,8 +23,6 @@ h1 {
   letter-spacing: -0.01em;
 }
 
-/* Labels */
-
 .info {
   display: flex;
   flex-direction: column;
@@ -33,14 +31,14 @@ h1 {
 
 .car-model {
   font-size: 1.15rem;
-  color: #e6edf3;
+  color: #d4d4d4;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
 
 .connection {
   font-size: 0.8rem;
-  color: #8b949e;
+  color: #999999;
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -49,7 +47,7 @@ h1 {
 
 .connection-details {
   font-size: 0.78rem;
-  color: #8b949e;
+  color: #999999;
   font-weight: 400;
   display: flex;
   align-items: center;
@@ -62,7 +60,7 @@ h1 {
 
 .text-hint {
   font-size: 0.65rem;
-  color: #484f58;
+  color: #555555;
   font-weight: 400;
   display: flex;
   align-items: center;
@@ -79,7 +77,7 @@ h1 {
 
 button.refresh {
   background: none;
-  border: 1px solid #30363d;
+  border: 1px solid #3a3a3a;
   border-radius: 4px;
   cursor: pointer;
   padding: 3px 5px;
@@ -90,8 +88,8 @@ button.refresh {
 }
 
 button.refresh:hover {
-  border-color: #58a6ff;
-  background: #1c2128;
+  border-color: #0078d4;
+  background: #252525;
 }
 
 @keyframes spin {
@@ -109,25 +107,24 @@ button.refresh:hover {
 
 ::selection {
   background: #264f78;
-  color: #e6edf3;
+  color: #d4d4d4;
 }
 
-/* Scrollbar global */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0d1117;
+  background: #1a1a1a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #30363d;
+  background-color: #3a3a3a;
   border-radius: 4px;
-  border: 2px solid #0d1117;
+  border: 2px solid #1a1a1a;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #484f58;
+  background-color: #505050;
 }
