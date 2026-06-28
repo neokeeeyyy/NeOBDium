@@ -5,7 +5,7 @@ use std::fmt;
 use crate::{
     engine::EngineType,
     scalar::{Scalar, Unit},
-    Command, Error, CODE_DESC_DB_PATH, OBD,
+    code_desc_db_path, Command, Error, OBD,
 };
 
 #[derive(Debug)]
@@ -156,7 +156,7 @@ impl TroubleCode {
         self.description = "none".to_string(); // default
 
         // connect to trouble code data base
-        let con = match sqlite::Connection::open(CODE_DESC_DB_PATH) {
+        let con = match sqlite::Connection::open(code_desc_db_path()) {
             Ok(con) => con,
             Err(err) => {
                 println!("when connecting to codes database: {err}");

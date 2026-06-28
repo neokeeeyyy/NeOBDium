@@ -150,6 +150,15 @@ fn main() {
                 .resolve("data/vpic.sqlite.xz", tauri::path::BaseDirectory::Resource)
                 .unwrap();
 
+            let code_desc_src = app
+                .path()
+                .resolve("data/code-descriptions.sqlite", tauri::path::BaseDirectory::Resource)
+                .unwrap();
+            let mode22_pids_src = app
+                .path()
+                .resolve("data/model-pids.sqlite", tauri::path::BaseDirectory::Resource)
+                .unwrap();
+
             spawn(async move {
                 // Detect when the frontend is loaded
                 let frontend_ready_listener = Arc::clone(&frontend_ready);
@@ -172,6 +181,16 @@ fn main() {
 
                 // load vpic database
                 let _ = try_load_vpic_database(&window_arc, db_path, xz_path);
+
+                // ensure code-descriptions and model-pids are in app_data_dir
+                let code_desc_dest = app_data_dir.join("code-descriptions.sqlite");
+                if !code_desc_dest.exists() {
+                    let _ = std::fs::copy(&code_desc_src, &code_desc_dest);
+                }
+                let mode22_pids_dest = app_data_dir.join("model-pids.sqlite");
+                if !mode22_pids_dest.exists() {
+                    let _ = std::fs::copy(&mode22_pids_src, &mode22_pids_dest);
+                }
             });
 
             Ok(())

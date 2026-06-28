@@ -11,7 +11,7 @@ use crate::cmd::{Command, CommandType};
 use crate::response::Response;
 use crate::scalar::{Scalar, Unit, UnitPreferences};
 use crate::vin::VIN;
-use crate::MODE22_PIDS_DB_PATH;
+use crate::mode22_pids_db_path;
 
 #[derive(Debug)]
 pub enum BankNumber {
@@ -897,7 +897,7 @@ impl OBD {
         };
 
         // connect to mode 22 database
-        let con = match sqlite::Connection::open(MODE22_PIDS_DB_PATH) {
+        let con = match sqlite::Connection::open(mode22_pids_db_path()) {
             Ok(con) => con,
             Err(err) => {
                 println!("when connecting to mode22 database: {err}");

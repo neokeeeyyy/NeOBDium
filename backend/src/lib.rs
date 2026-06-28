@@ -8,6 +8,7 @@ mod response;
 pub mod scalar;
 pub mod vin;
 
+use std::path::PathBuf;
 use std::sync::atomic::AtomicUsize;
 
 pub use cmd::*;
@@ -15,8 +16,21 @@ pub use obd::*;
 pub use pid::*;
 pub use response::*;
 
-const CODE_DESC_DB_PATH: &str = "./data/code-descriptions.sqlite";
-const MODE22_PIDS_DB_PATH: &str = "./data/model-pids.sqlite";
+pub fn code_desc_db_path() -> PathBuf {
+    if let Some(dir) = vin::APP_DATA_DIR.get() {
+        dir.join("code-descriptions.sqlite")
+    } else {
+        PathBuf::from("./data/code-descriptions.sqlite")
+    }
+}
+
+pub fn mode22_pids_db_path() -> PathBuf {
+    if let Some(dir) = vin::APP_DATA_DIR.get() {
+        dir.join("model-pids.sqlite")
+    } else {
+        PathBuf::from("./data/model-pids.sqlite")
+    }
+}
 
 /// Whether or not to pause OBD threads
 /// Keeps track of how many threads want to pause obd

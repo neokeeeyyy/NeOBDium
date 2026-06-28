@@ -4,26 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Panel OBDII</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Segoe UI"', 'sans-serif'],
+              mono: ['"Cascadia Code"', 'Consolas', 'monospace'],
+            },
+            colors: {
+              base: '#1a1a1a',
+              surface: '#252525',
+              hover: '#2a2a2a',
+              border: '#3a3a3a',
+              primary: '#d4d4d4',
+              secondary: '#999999',
+              muted: '#555555',
+              accent: '#0078d4',
+            },
+          },
+        },
+      };
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="scripts/events.js"></script>
     <script type="module" src="scripts/settings.js"></script>
     <script type="module" src="scripts/main.js"></script>
     <script type="module" src="scripts/features.js"></script>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="layout.css" />
-    <link rel="stylesheet" href="scrollbar.css" />
     <link rel="stylesheet" href="components/card.css" />
     <link rel="stylesheet" href="components/notification.css" />
-    <link rel="stylesheet" href="components/forms.css" />
     <link rel="stylesheet" href="components/pid.css" />
-    <link rel="stylesheet" href="components/sidebar.css" />
-    <link rel="stylesheet" href="components/vin.css" />
     <link rel="stylesheet" href="components/buttons.css" />
   </head>
 
-  <body>
+  <body class="flex h-screen overflow-hidden bg-base text-primary text-[13px] leading-[1.5] font-sans antialiased selection:bg-[#264f78] selection:text-primary">
     <div
-      class="freeze-frame-status"
+      class="freeze-frame-status fixed bottom-0 z-[999] flex h-5 w-full items-center justify-center gap-1.5 bg-accent text-[10px] font-medium uppercase tracking-wide"
       id="freeze-frame-status"
       style="display: none"
     >
@@ -54,15 +72,15 @@
         <path d="M9 21h1" />
         <path d="M9 3h1" />
       </svg>
-      <label>FOTOGRAMA ACTIVO | LEYENDO DE FOTOGRAMA</label>
+      <label class="text-[10px] font-medium">FOTOGRAMA ACTIVO | LEYENDO DE FOTOGRAMA</label>
     </div>
-    <div class="demo-status" id="demo-status" style="display: none">
-      <label>MODO DEMO ACTIVO | LEYENDO DATOS SIMULADOS</label>
+    <div class="demo-status fixed bottom-0 z-[999] flex h-5 w-full items-center justify-center gap-1.5 bg-hover text-[10px] font-medium uppercase tracking-wide" id="demo-status" style="display: none">
+      <label class="text-[10px] font-medium">MODO DEMO ACTIVO | LEYENDO DATOS SIMULADOS</label>
     </div>
 
-    <div class="sidebar">
+    <div class="sidebar flex w-12 flex-col items-center gap-0.5 border-r border-border bg-base py-1.5">
       <button
-        class="sidebar-button"
+        class="sidebar-button relative flex h-9 w-10 cursor-pointer items-center justify-center rounded border-none bg-transparent transition-colors hover:bg-surface"
         data-tooltip="CONECTAR"
         data-screen="connect-settings"
       >
@@ -75,7 +93,7 @@
           stroke-width="1.9"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="sidebar-button-img"
+          class="sidebar-button-img text-muted transition-colors group-hover:text-secondary"
         >
           <circle cx="10" cy="7" r="1" />
           <circle cx="4" cy="20" r="1" />
@@ -87,7 +105,7 @@
         </svg>
       </button>
       <button
-        class="sidebar-button"
+        class="sidebar-button relative flex h-9 w-10 cursor-pointer items-center justify-center rounded border-none bg-transparent transition-colors hover:bg-surface"
         data-tooltip="DECODIFICAR VIN"
         data-screen="vin"
       >
@@ -100,7 +118,7 @@
           stroke-width="1.9"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="sidebar-button-img"
+          class="sidebar-button-img text-muted"
         >
           <path d="M12 20h-1a2 2 0 0 1-2-2 2 2 0 0 1-2 2H6" />
           <path d="M13 8h7a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-7" />
@@ -110,7 +128,7 @@
         </svg>
       </button>
       <button
-        class="sidebar-button"
+        class="sidebar-button relative flex h-9 w-10 cursor-pointer items-center justify-center rounded border-none bg-transparent transition-colors hover:bg-surface"
         data-tooltip="PANEL OBD"
         data-screen="dashboard"
       >
@@ -123,14 +141,14 @@
           stroke-width="1.9"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="sidebar-button-img"
+          class="sidebar-button-img text-muted"
         >
           <path d="m12 14 4-4" />
           <path d="M3.34 19a10 10 0 1 1 17.32 0" />
         </svg>
       </button>
       <button
-        class="sidebar-button"
+        class="sidebar-button relative flex h-9 w-10 cursor-pointer items-center justify-center rounded border-none bg-transparent transition-colors hover:bg-surface"
         data-tooltip="CODIGOS DE ERROR"
         data-screen="view-dtcs"
       >
@@ -143,7 +161,7 @@
           stroke-width="1.9"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="sidebar-button-img"
+          class="sidebar-button-img text-muted"
         >
           <path
             d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"
@@ -153,7 +171,7 @@
         </svg>
       </button>
       <button
-        class="sidebar-button"
+        class="sidebar-button relative flex h-9 w-10 cursor-pointer items-center justify-center rounded border-none bg-transparent transition-colors hover:bg-surface"
         data-tooltip="PRUEBAS I/M"
         data-screen="readiness-tests"
       >
@@ -166,7 +184,7 @@
           stroke-width="1.9"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="sidebar-button-img"
+          class="sidebar-button-img text-muted"
         >
           <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
           <path
@@ -176,7 +194,7 @@
         </svg>
       </button>
       <button
-        class="sidebar-button"
+        class="sidebar-button relative flex h-9 w-10 cursor-pointer items-center justify-center rounded border-none bg-transparent transition-colors hover:bg-surface"
         data-tooltip="VER PIDS"
         data-screen="edit"
       >
@@ -189,7 +207,7 @@
           stroke-width="1.9"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="sidebar-button-img"
+          class="sidebar-button-img text-muted"
         >
           <rect width="18" height="18" x="3" y="3" rx="2" />
           <path d="M21 9H3" />
@@ -197,7 +215,7 @@
         </svg>
       </button>
       <button
-        class="sidebar-button"
+        class="sidebar-button relative flex h-9 w-10 cursor-pointer items-center justify-center rounded border-none bg-transparent transition-colors hover:bg-surface"
         data-tooltip="VER GRAFICOS"
         data-screen="graphs"
       >
@@ -208,7 +226,7 @@
           viewBox="0 0 24 24"
           stroke-width="1.9"
           stroke="currentColor"
-          class="sidebar-button-img"
+          class="sidebar-button-img text-muted"
         >
           <path
             stroke-linecap="round"
@@ -217,9 +235,9 @@
           />
         </svg>
       </button>
-      <div style="flex: 1 1 auto"></div>
+      <div class="flex-1"></div>
       <button
-        class="sidebar-button"
+        class="sidebar-button relative flex h-9 w-10 cursor-pointer items-center justify-center rounded border-none bg-transparent transition-colors hover:bg-surface"
         data-tooltip="TERMINAL"
         data-screen="terminal"
       >
@@ -232,14 +250,14 @@
           stroke-width="1.9"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="sidebar-button-img"
+          class="sidebar-button-img text-muted"
         >
           <rect width="18" height="18" x="3" y="3" rx="2" />
           <path d="m10 8 4 4-4 4" />
         </svg>
       </button>
       <button
-        class="sidebar-button"
+        class="sidebar-button relative flex h-9 w-10 cursor-pointer items-center justify-center rounded border-none bg-transparent transition-colors hover:bg-surface"
         data-tooltip="AJUSTES"
         data-screen="settings"
       >
@@ -252,7 +270,7 @@
           stroke-width="1.9"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="sidebar-button-img"
+          class="sidebar-button-img text-muted"
         >
           <path
             d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
@@ -262,64 +280,65 @@
       </button>
     </div>
 
-    <div class="main">
-      <div class="header">
-        <div class="info">
-          <div class="connection">
+    <div class="main flex flex-1 flex-col overflow-hidden p-3">
+      <div class="header mb-3 flex min-h-[48px] items-center justify-between border-b border-border pb-2.5">
+        <div class="info flex flex-col gap-px">
+          <div class="connection flex items-center gap-1.5 text-[0.8rem] font-medium text-secondary">
             <img
               id="connection-icon"
               src="/assets/icons/not-connected.png"
               alt="Connectivity"
+              class="h-[0.85em] w-[0.85em] object-contain"
             />
             <span id="connection-label">ELM327 NO CONECTADO</span>
           </div>
-          <div class="car-model">NO DISPONIBLE</div>
-          <div class="vin">VIN: ?????????????????</div>
+          <div class="car-model text-[1.15rem] font-semibold tracking-tight text-primary">NO DISPONIBLE</div>
+          <div class="vin ml-px text-[0.78rem] font-medium text-muted">VIN: ?????????????????</div>
         </div>
-        <div class="search-container">
-          <input class="search" type="text" placeholder="Buscar" />
+        <div class="search-container relative flex w-2/5 items-center">
+          <input class="search h-[26px] w-full rounded border border-border bg-surface px-2 py-1 pr-7 text-[0.78rem] text-primary outline-none placeholder-muted transition-colors focus:border-accent" type="text" placeholder="Buscar" />
           <img
             src="/assets/icons/search.png"
             alt="Search"
-            class="search-icon"
+            class="search-icon pointer-events-none absolute right-2 h-3 w-3 opacity-40"
           />
         </div>
       </div>
 
-      <div id="connect-settings" class="screen" style="display: none">
-        <div class="screen-label">CONFIGURACION DE CONEXION</div>
-        <div class="connection-details" id="connection-details">
+      <div id="connect-settings" class="screen flex flex-1 flex-col overflow-hidden" style="display: none">
+        <div class="screen-label pb-1.5 text-[1.15rem] font-semibold tracking-tight text-primary">CONFIGURACION DE CONEXION</div>
+        <div class="connection-details mb-2 text-[0.78rem] font-normal text-secondary" id="connection-details">
           SIN CONEXION ESTABLECIDA
         </div>
 
-        <div class="form-row">
-          <div class="dropdown" id="protocol-dropdown">
-            <label>PROTOCOLO OBD-II</label>
+        <div class="form-row flex flex-wrap gap-2.5">
+          <div class="dropdown relative inline-block w-[260px] select-none" id="protocol-dropdown">
+            <label class="mb-0.5 ml-px block text-[0.7rem] font-semibold uppercase tracking-wide text-secondary">PROTOCOLO OBD-II</label>
             <button
-              class="dropdown-toggle"
+              class="dropdown-toggle w-full cursor-pointer rounded border border-border bg-surface px-2 py-1 text-left text-[0.75rem] font-medium text-secondary transition-colors hover:border-accent"
               id="protocol-selected"
               data-value="0"
             >
               AUTOMATICO
             </button>
-            <ul class="dropdown-menu" id="protocol-menu">
-              <li data-value="0">AUTOMATICO</li>
-              <li data-value="1">SAE J1850 PWM @41.6k</li>
-              <li data-value="2">SAE J1850 VPW @10.4k</li>
-              <li data-value="3">ISO 9141-2 (5 baud init)</li>
-              <li data-value="4">ISO 14230-4 KWP (5 baud init)</li>
-              <li data-value="5">ISO 14230-4 KWP (fast init)</li>
-              <li data-value="6">ISO 15765-4 CAN (11 bit ID @500k)</li>
-              <li data-value="7">ISO 15765-4 CAN (29 bit ID @500k)</li>
-              <li data-value="8">ISO 15765-4 CAN (11 bit ID @250k)</li>
-              <li data-value="9">ISO 15765-4 CAN (29 bit ID @250k)</li>
+            <ul class="dropdown-menu absolute z-50 mt-0.5 w-full overflow-hidden rounded border border-border bg-surface" id="protocol-menu">
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="0">AUTOMATICO</li>
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="1">SAE J1850 PWM @41.6k</li>
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="2">SAE J1850 VPW @10.4k</li>
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="3">ISO 9141-2 (5 baud init)</li>
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="4">ISO 14230-4 KWP (5 baud init)</li>
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="5">ISO 14230-4 KWP (fast init)</li>
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="6">ISO 15765-4 CAN (11 bit ID @500k)</li>
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="7">ISO 15765-4 CAN (29 bit ID @500k)</li>
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="8">ISO 15765-4 CAN (11 bit ID @250k)</li>
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="9">ISO 15765-4 CAN (29 bit ID @250k)</li>
             </ul>
           </div>
 
-          <div class="dropdown" id="serial-port-dropdown">
-            <div class="label-row">
-              <label>PUERTO SERIE</label>
-              <button class="refresh" id="refresh-serial-ports">
+          <div class="dropdown relative inline-block w-[260px] select-none" id="serial-port-dropdown">
+            <div class="label-row flex items-center gap-[5.7rem]">
+              <label class="mb-0.5 ml-px block text-[0.7rem] font-semibold uppercase tracking-wide text-secondary">PUERTO SERIE</label>
+              <button class="refresh flex cursor-pointer items-center justify-center rounded border border-border bg-transparent p-0.5 transition-colors hover:border-accent hover:bg-surface" id="refresh-serial-ports">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="17"
@@ -343,30 +362,30 @@
               </button>
             </div>
 
-            <button class="dropdown-toggle" id="serial-port-selected">
+            <button class="dropdown-toggle w-full cursor-pointer rounded border border-border bg-surface px-2 py-1 text-left text-[0.75rem] font-medium text-secondary transition-colors hover:border-accent" id="serial-port-selected">
               MODO DEMO
             </button>
-            <ul class="dropdown-menu" id="serial-port-dropdown-menu">
-              <li data-value="DEMO MODE">MODO DEMO</li>
+            <ul class="dropdown-menu absolute z-50 mt-0.5 w-full overflow-hidden rounded border border-border bg-surface" id="serial-port-dropdown-menu">
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="DEMO MODE">MODO DEMO</li>
             </ul>
           </div>
 
-          <div class="dropdown" id="baud-rate-dropdown">
-            <label>VELOCIDAD</label>
-            <button class="dropdown-locked-content" id="baud-rate-selected">
+          <div class="dropdown relative inline-block w-[260px] select-none" id="baud-rate-dropdown">
+            <label class="mb-0.5 ml-px block text-[0.7rem] font-semibold uppercase tracking-wide text-secondary">VELOCIDAD</label>
+            <button class="dropdown-locked-content w-full cursor-not-allowed rounded border border-border bg-base px-2 py-1 text-left text-[0.75rem] font-medium text-muted" id="baud-rate-selected">
               0
             </button>
           </div>
         </div>
 
-        <div class="button-row">
-          <button class="btn connect" id="btn-connect">CONECTAR</button>
-          <button class="btn disconnect" id="btn-disconnect" disabled>
+        <div class="button-row mt-1.5 flex gap-1.5">
+          <button class="btn connect inline-flex items-center justify-center rounded border border-[#2d6a4f] bg-[#1a3a2e] px-3 text-[0.72rem] font-semibold uppercase tracking-wide text-[#4ec9b0] transition-colors hover:border-[#4ec9b0] hover:bg-[#1f4d3d]" id="btn-connect">CONECTAR</button>
+          <button class="btn disconnect inline-flex items-center justify-center rounded border border-[#8b3a3a] bg-[#2d1a1a] px-3 text-[0.72rem] font-semibold uppercase tracking-wide text-[#f44747] transition-colors hover:border-[#f44747] hover:bg-[#3d2020]" id="btn-disconnect" disabled>
             DESCONECTAR
           </button>
         </div>
 
-        <div class="text-hint" style="display: flex">
+        <div class="text-hint mt-1 mb-2 flex items-center gap-1.5 text-[0.65rem] font-normal text-muted">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="15"
@@ -386,257 +405,257 @@
         </div>
       </div>
 
-      <div id="dashboard" class="screen" style="display: flex">
-        <div class="screen-label">PANEL OBD</div>
-        <div class="connection-details">MONITOREA VALORES OBD DEL VEHICULO EN TIEMPO REAL</div>
-        <div class="button-row" style="margin-bottom: 8px">
-          <div class="btn" id="obd-pause">PAUSAR</div>
-          <div class="btn" id="obd-clear">LIMPIAR</div>
+      <div id="dashboard" class="screen flex flex-1 flex-col overflow-hidden" style="display: flex">
+        <div class="screen-label pb-1.5 text-[1.15rem] font-semibold tracking-tight text-primary">PANEL OBD</div>
+        <div class="connection-details mb-2 text-[0.78rem] font-normal text-secondary">MONITOREA VALORES OBD DEL VEHICULO EN TIEMPO REAL</div>
+        <div class="button-row mb-2 flex gap-1.5">
+          <div class="btn inline-flex cursor-pointer items-center justify-center rounded border border-border bg-hover px-3 text-[0.72rem] font-semibold uppercase tracking-wide text-primary transition-colors hover:border-accent hover:bg-surface" id="obd-pause">PAUSAR</div>
+          <div class="btn inline-flex cursor-pointer items-center justify-center rounded border border-border bg-hover px-3 text-[0.72rem] font-semibold uppercase tracking-wide text-primary transition-colors hover:border-accent hover:bg-surface" id="obd-clear">LIMPIAR</div>
         </div>
-        <div class="grid" id="dashboard-cards" style="display: grid"></div>
+        <div class="grid flex-1 content-start gap-2 overflow-y-auto pr-1" id="dashboard-cards" style="display: grid"></div>
       </div>
 
-      <div id="view-dtcs" class="screen" style="display: none">
-        <div class="screen-label">CODIGOS DE ERROR</div>
-        <div class="connection-details">VER CODIGOS DTC DETALLADOS, LIMPIAR CODIGOS O EXPORTAR A ARCHIVO</div>
-        <div class="button-row">
-          <div class="btn" id="dtc-scan-button" style="width: 105px">ESCANEAR</div>
-          <div class="btn" id="dtc-clear-button" style="position: relative; overflow: hidden">
+      <div id="view-dtcs" class="screen flex flex-1 flex-col overflow-hidden" style="display: none">
+        <div class="screen-label pb-1.5 text-[1.15rem] font-semibold tracking-tight text-primary">CODIGOS DE ERROR</div>
+        <div class="connection-details mb-2 text-[0.78rem] font-normal text-secondary">VER CODIGOS DTC DETALLADOS, LIMPIAR CODIGOS O EXPORTAR A ARCHIVO</div>
+        <div class="button-row flex gap-1.5">
+          <div class="btn inline-flex cursor-pointer items-center justify-center rounded border border-border bg-hover px-3 text-[0.72rem] font-semibold uppercase tracking-wide text-primary transition-colors hover:border-accent hover:bg-surface" id="dtc-scan-button" style="width: 105px">ESCANEAR</div>
+          <div class="btn relative inline-flex cursor-pointer items-center justify-center overflow-hidden rounded border border-border bg-hover px-3 text-[0.72rem] font-semibold uppercase tracking-wide text-primary transition-colors hover:border-accent hover:bg-surface" id="dtc-clear-button">
             <span style="z-index: 5">LIMPIAR</span>
             <div class="btn-hold-fill" id="btn-hold-fill"></div>
           </div>
-          <div class="btn" id="dtc-log-file" style="width: 105px">EXPORTAR</div>
+          <div class="btn inline-flex cursor-pointer items-center justify-center rounded border border-border bg-hover px-3 text-[0.72rem] font-semibold uppercase tracking-wide text-primary transition-colors hover:border-accent hover:bg-surface" id="dtc-log-file" style="width: 105px">EXPORTAR</div>
         </div>
-        <div id="dtc-list" class="info-row-scroll" style="margin-top: 10px"></div>
+        <div id="dtc-list" class="info-row-scroll mt-2.5 flex-1 overflow-y-auto pr-1.5"></div>
       </div>
 
-      <div id="edit" class="screen" style="display: none">
-        <div class="screen-label">VER PIDS (0)</div>
-        <div class="connection-details">AGREGAR Y VER PIDS SOPORTADOS EN PANEL OBD</div>
-        <div class="button-row" style="margin-bottom: 8px">
-          <div class="btn" id="pid-add" style="width: 105px">AGREGAR PID</div>
+      <div id="edit" class="screen flex h-full max-h-screen flex-1 flex-col overflow-hidden" style="display: none">
+        <div class="screen-label pb-1.5 text-[1.15rem] font-semibold tracking-tight text-primary">VER PIDS (0)</div>
+        <div class="connection-details mb-2 text-[0.78rem] font-normal text-secondary">AGREGAR Y VER PIDS SOPORTADOS EN PANEL OBD</div>
+        <div class="button-row mb-2 flex gap-1.5">
+          <div class="btn inline-flex cursor-pointer items-center justify-center rounded border border-border bg-hover px-3 text-[0.72rem] font-semibold uppercase tracking-wide text-primary transition-colors hover:border-accent hover:bg-surface" id="pid-add" style="width: 105px">AGREGAR PID</div>
         </div>
-        <div id="pid-list" class="info-row-scroll" style="margin-top: -10px"></div>
+        <div id="pid-list" class="info-row-scroll flex-1 overflow-y-auto pr-1.5" style="margin-top: -10px"></div>
       </div>
 
-      <div id="readiness-tests" class="screen" style="display: none">
-        <div class="screen-label">PRUEBAS I/M</div>
-        <div class="connection-details">VER ESTADO DE LAS PRUEBAS DE INSPECCION/MANTENIMIENTO</div>
-        <div class="button-row">
-          <button id="readiness-test-refresh" class="btn" style="width: 105px">ACTUALIZAR</button>
-          <button id="readiness-test-export" class="btn" style="width: 105px">EXPORTAR</button>
+      <div id="readiness-tests" class="screen flex flex-1 flex-col overflow-hidden" style="display: none">
+        <div class="screen-label pb-1.5 text-[1.15rem] font-semibold tracking-tight text-primary">PRUEBAS I/M</div>
+        <div class="connection-details mb-2 text-[0.78rem] font-normal text-secondary">VER ESTADO DE LAS PRUEBAS DE INSPECCION/MANTENIMIENTO</div>
+        <div class="button-row flex gap-1.5">
+          <button id="readiness-test-refresh" class="btn inline-flex cursor-pointer items-center justify-center rounded border border-border bg-hover px-3 text-[0.72rem] font-semibold uppercase tracking-wide text-primary transition-colors hover:border-accent hover:bg-surface" style="width: 105px">ACTUALIZAR</button>
+          <button id="readiness-test-export" class="btn inline-flex cursor-pointer items-center justify-center rounded border border-border bg-hover px-3 text-[0.72rem] font-semibold uppercase tracking-wide text-primary transition-colors hover:border-accent hover:bg-surface" style="width: 105px">EXPORTAR</button>
         </div>
-        <div id="readiness-tests-list" class="info-row-scroll" style="margin-top: 10px"></div>
+        <div id="readiness-tests-list" class="info-row-scroll mt-2.5 flex-1 overflow-y-auto pr-1.5"></div>
       </div>
 
-      <div id="graphs" class="screen" style="display: none">
-        <div class="screen-label">GRAFICOS</div>
-        <div class="connection-details">VISUALIZA VARIOS DATOS OBD A LO LARGO DEL TIEMPO</div>
+      <div id="graphs" class="screen flex flex-1 flex-col overflow-hidden" style="display: none">
+        <div class="screen-label pb-1.5 text-[1.15rem] font-semibold tracking-tight text-primary">GRAFICOS</div>
+        <div class="connection-details mb-2 text-[0.78rem] font-normal text-secondary">VISUALIZA VARIOS DATOS OBD A LO LARGO DEL TIEMPO</div>
 
-        <div class="graphs" style="padding-right: 10px">
-          <div class="graph-dropdown" style="flex: 0 0 100%; border-radius: 3px; width: 100%">
-            <button class="graph-dropdown-toggle" id="chart1-selected" data-value="0" style="width: 100%; box-shadow: none">
+        <div class="graphs grid h-[calc(100vh-100px)] grid-cols-2 grid-rows-[auto_1fr_auto_1fr] gap-3 overflow-auto pr-1">
+          <div class="graph-dropdown relative inline-block w-full" style="flex: 0 0 100%">
+            <button class="graph-dropdown-toggle w-full cursor-pointer rounded border border-border bg-surface px-2 py-1 text-center text-[0.72rem] font-medium uppercase tracking-wide text-secondary transition-colors hover:border-accent" id="chart1-selected" data-value="0" style="box-shadow: none">
               NINGUNO SELECCIONADO
             </button>
-            <ul class="graph-dropdown-menu" id="chart1-menu"></ul>
+            <ul class="graph-dropdown-menu absolute z-50 mt-0.5 w-full overflow-hidden rounded border border-border bg-surface" id="chart1-menu"></ul>
           </div>
 
-          <div class="graph-dropdown" style="flex: 0 0 100%; border-radius: 3px; width: 100%">
-            <button class="graph-dropdown-toggle" id="chart2-selected" data-value="0" style="width: 100%; box-shadow: none">
+          <div class="graph-dropdown relative inline-block w-full" style="flex: 0 0 100%">
+            <button class="graph-dropdown-toggle w-full cursor-pointer rounded border border-border bg-surface px-2 py-1 text-center text-[0.72rem] font-medium uppercase tracking-wide text-secondary transition-colors hover:border-accent" id="chart2-selected" data-value="0" style="box-shadow: none">
               NINGUNO SELECCIONADO
             </button>
-            <ul class="graph-dropdown-menu" id="chart2-menu" style="width: 100%"></ul>
+            <ul class="graph-dropdown-menu absolute z-50 mt-0.5 w-full overflow-hidden rounded border border-border bg-surface" id="chart2-menu"></ul>
           </div>
 
-          <div class="graph-container" style="width: 100%; display: flex; margin-top: -23px; border-radius: 3px">
-            <div style="flex: 1; width: 80%; height: 100%; aspect-ratio: 2; display: flex; flex-direction: column">
+          <div class="graph-container flex w-full rounded border border-border bg-surface">
+            <div class="flex aspect-[2] w-4/5 flex-1 flex-col">
               <canvas id="chart1" style="width: auto !important; height: auto !important"></canvas>
             </div>
           </div>
 
-          <div class="graph-container" style="width: 100%; display: flex; margin-top: -23px; border-radius: 3px">
-            <div style="flex: 1; width: 80%; height: 100%; aspect-ratio: 2; display: flex; flex-direction: column">
+          <div class="graph-container flex w-full rounded border border-border bg-surface">
+            <div class="flex aspect-[2] w-4/5 flex-1 flex-col">
               <canvas id="chart2" style="width: auto !important; height: auto !important"></canvas>
             </div>
           </div>
 
-          <div class="graph-dropdown" style="flex: 0 0 100%; border-radius: 3px; width: 100%; margin-top: -6px">
-            <button class="graph-dropdown-toggle" id="graph3-selected" data-value="0" style="width: 100%; box-shadow: none">
+          <div class="graph-dropdown relative inline-block w-full" style="flex: 0 0 100%">
+            <button class="graph-dropdown-toggle w-full cursor-pointer rounded border border-border bg-surface px-2 py-1 text-center text-[0.72rem] font-medium uppercase tracking-wide text-secondary transition-colors hover:border-accent" id="graph3-selected" data-value="0" style="box-shadow: none">
               NINGUNO SELECCIONADO
             </button>
-            <ul class="graph-dropdown-menu" id="chart3-menu" style="width: 100%"></ul>
+            <ul class="graph-dropdown-menu absolute z-50 mt-0.5 w-full overflow-hidden rounded border border-border bg-surface" id="chart3-menu"></ul>
           </div>
 
-          <div class="graph-dropdown" style="flex: 0 0 100%; border-radius: 3px; width: 100%; margin-top: -6px">
-            <button class="graph-dropdown-toggle" id="graph4-selected" data-value="0" style="width: 100%; box-shadow: none">
+          <div class="graph-dropdown relative inline-block w-full" style="flex: 0 0 100%">
+            <button class="graph-dropdown-toggle w-full cursor-pointer rounded border border-border bg-surface px-2 py-1 text-center text-[0.72rem] font-medium uppercase tracking-wide text-secondary transition-colors hover:border-accent" id="graph4-selected" data-value="0" style="box-shadow: none">
               NINGUNO SELECCIONADO
             </button>
-            <ul class="graph-dropdown-menu" id="chart4-menu" style="width: 100%"></ul>
+            <ul class="graph-dropdown-menu absolute z-50 mt-0.5 w-full overflow-hidden rounded border border-border bg-surface" id="chart4-menu"></ul>
           </div>
 
-          <div class="graph-container" style="width: 100%; display: flex; margin-top: -23px; border-radius: 3px">
-            <div style="flex: 1; width: 80%; height: 100%; aspect-ratio: 2; display: flex; flex-direction: column">
+          <div class="graph-container flex w-full rounded border border-border bg-surface">
+            <div class="flex aspect-[2] w-4/5 flex-1 flex-col">
               <canvas id="chart3" style="width: auto !important; height: auto !important"></canvas>
             </div>
           </div>
 
-          <div class="graph-container" style="width: 100%; display: flex; margin-top: -23px; border-radius: 3px">
-            <div style="flex: 1; width: 80%; height: 100%; aspect-ratio: 2; display: flex; flex-direction: column">
+          <div class="graph-container flex w-full rounded border border-border bg-surface">
+            <div class="flex aspect-[2] w-4/5 flex-1 flex-col">
               <canvas id="chart4" style="width: auto !important; height: auto !important"></canvas>
             </div>
           </div>
         </div>
       </div>
 
-      <div id="vin" class="screen" style="display: none">
-        <div class="screen-label">DECODIFICACION DE VIN</div>
-        <div class="connection-details">INGRESA EL VIN PARA OBTENER DETALLES DEL VEHICULO</div>
-        <div class="button-row" style="margin-bottom: 8px">
-          <button id="vin-export" disabled class="btn" style="width: 140px">EXPORTAR</button>
-          <button id="vin-decode-start" class="btn" style="width: 140px">DECODIFICAR</button>
-          <input class="vin-input" type="text" placeholder="Ingresar VIN" />
+      <div id="vin" class="screen flex flex-1 flex-col overflow-hidden" style="display: none">
+        <div class="screen-label pb-1.5 text-[1.15rem] font-semibold tracking-tight text-primary">DECODIFICACION DE VIN</div>
+        <div class="connection-details mb-2 text-[0.78rem] font-normal text-secondary">INGRESA EL VIN PARA OBTENER DETALLES DEL VEHICULO</div>
+        <div class="button-row mb-2 flex gap-1.5">
+          <button id="vin-export" disabled class="btn inline-flex cursor-pointer items-center justify-center rounded border border-border bg-hover px-3 text-[0.72rem] font-semibold uppercase tracking-wide text-primary transition-colors hover:border-accent hover:bg-surface" style="width: 140px">EXPORTAR</button>
+          <button id="vin-decode-start" class="btn inline-flex cursor-pointer items-center justify-center rounded border border-border bg-hover px-3 text-[0.72rem] font-semibold uppercase tracking-wide text-primary transition-colors hover:border-accent hover:bg-surface" style="width: 140px">DECODIFICAR</button>
+          <input class="vin-input h-[26px] w-[180px] rounded border border-border bg-surface px-2 text-[0.78rem] uppercase text-primary outline-none placeholder-muted transition-colors focus:border-accent" type="text" placeholder="Ingresar VIN" />
         </div>
-        <div class="grid" id="vin-container"></div>
+        <div class="grid flex-1 content-start gap-2 overflow-y-auto pr-1" id="vin-container"></div>
       </div>
 
-      <div id="terminal" class="screen" style="display: none">
-        <div class="screen-label">TERMINAL</div>
-        <div class="connection-details">ENVIAR COMANDOS VIA ELM</div>
-        <div class="terminal-output" id="terminal-output"></div>
-        <input type="text" class="terminal-input" value="> " id="terminal-input" />
+      <div id="terminal" class="screen flex flex-1 flex-col overflow-hidden" style="display: none">
+        <div class="screen-label pb-1.5 text-[1.15rem] font-semibold tracking-tight text-primary">TERMINAL</div>
+        <div class="connection-details mb-2 text-[0.78rem] font-normal text-secondary">ENVIAR COMANDOS VIA ELM</div>
+        <div class="terminal-output h-[88%] w-full overflow-auto rounded border border-border bg-base px-2.5 py-2.5 font-mono text-[0.75rem] uppercase leading-[1.6] text-primary"></div>
+        <input type="text" class="terminal-input mt-1 h-7 w-full rounded border border-border bg-surface px-2.5 py-1.5 font-mono text-[0.75rem] uppercase text-primary outline-none transition-colors focus:border-accent" value="> " id="terminal-input" />
       </div>
 
-      <div id="settings" class="screen" style="display: none">
-        <div class="screen-label">PREFERENCIAS</div>
-        <div class="connection-details">CONFIGURAR AJUSTES GUARDADOS, OPCIONES Y PREFERENCIAS</div>
+      <div id="settings" class="screen flex flex-1 flex-col overflow-hidden" style="display: none">
+        <div class="screen-label pb-1.5 text-[1.15rem] font-semibold tracking-tight text-primary">PREFERENCIAS</div>
+        <div class="connection-details mb-2 text-[0.78rem] font-normal text-secondary">CONFIGURAR AJUSTES GUARDADOS, OPCIONES Y PREFERENCIAS</div>
 
-        <div style="display: flex; gap: 30px; flex-wrap: wrap">
+        <div class="flex flex-wrap gap-[30px]">
           <div>
-            <div class="screen-label" style="margin-bottom: 4px; font-size: 0.8rem; font-weight: 600; color: #999999">REGISTRO</div>
-            <div style="display: flex; flex-direction: column; gap: 2px">
-              <label class="switch">
-                <input type="checkbox" id="record-responses" disabled />
-                <span class="slider"></span>
-                <span class="settings-label" style="margin-left: 8px">GRABAR RESPUESTAS OBD</span>
+            <div class="mb-1 text-[0.8rem] font-semibold text-secondary">REGISTRO</div>
+            <div class="flex flex-col gap-0.5">
+              <label class="switch relative mb-3.5 mt-[-6px] flex h-4 w-8 flex-shrink-0 whitespace-nowrap">
+                <input type="checkbox" id="record-responses" disabled class="h-0 w-0 opacity-0" />
+                <span class="slider absolute inset-0 cursor-pointer rounded-full border border-border bg-hover transition-colors duration-200"></span>
+                <span class="settings-label ml-2 flex items-center whitespace-nowrap text-[0.78rem] font-medium text-secondary">GRABAR RESPUESTAS OBD</span>
               </label>
-              <label class="switch">
-                <input type="checkbox" id="replay-responses" disabled />
-                <span class="slider"></span>
-                <span class="settings-label" style="margin-left: 8px">REPRODUCIR RESPUESTAS</span>
+              <label class="switch relative mb-3.5 mt-[-6px] flex h-4 w-8 flex-shrink-0 whitespace-nowrap">
+                <input type="checkbox" id="replay-responses" disabled class="h-0 w-0 opacity-0" />
+                <span class="slider absolute inset-0 cursor-pointer rounded-full border border-border bg-hover transition-colors duration-200"></span>
+                <span class="settings-label ml-2 flex items-center whitespace-nowrap text-[0.78rem] font-medium text-secondary">REPRODUCIR RESPUESTAS</span>
               </label>
-              <label class="switch">
-                <input type="checkbox" id="hide-notifications" />
-                <span class="slider"></span>
-                <span class="settings-label" style="margin-left: 8px">OCULTAR NOTIFICACIONES</span>
+              <label class="switch relative mb-3.5 mt-[-6px] flex h-4 w-8 flex-shrink-0 whitespace-nowrap">
+                <input type="checkbox" id="hide-notifications" class="h-0 w-0 opacity-0" />
+                <span class="slider absolute inset-0 cursor-pointer rounded-full border border-border bg-hover transition-colors duration-200"></span>
+                <span class="settings-label ml-2 flex items-center whitespace-nowrap text-[0.78rem] font-medium text-secondary">OCULTAR NOTIFICACIONES</span>
               </label>
             </div>
-            <div style="display: flex; align-items: center; gap: 8px; margin-top: 6px">
-              <label class="btn" id="log-file-button" style="width: 120px; margin-top: 0">SELECCIONAR ARCHIVO</label>
-              <span class="settings-label" style="font-size: 0.65rem">RUTA DEL ARCHIVO</span>
+            <div class="mt-1.5 flex items-center gap-2">
+              <label class="btn mt-0 inline-flex w-[120px] cursor-pointer items-center justify-center rounded border border-border bg-hover px-3 text-[0.72rem] font-semibold uppercase tracking-wide text-primary transition-colors hover:border-accent hover:bg-surface" id="log-file-button">SELECCIONAR ARCHIVO</label>
+              <span class="settings-label flex items-center text-[0.65rem] font-medium text-secondary">RUTA DEL ARCHIVO</span>
             </div>
-            <div id="log-file-path" class="settings-label" style="font-size: 0.6rem; margin-top: 2px; color: #555555"></div>
-            <input id="file-upload" type="file" />
+            <div id="log-file-path" class="settings-label mt-0.5 flex items-center text-[0.6rem] font-medium text-muted"></div>
+            <input id="file-upload" type="file" class="hidden" />
           </div>
           <div>
-            <div class="screen-label" style="margin-bottom: 4px; font-size: 0.8rem; font-weight: 600; color: #999999">DIAGNOSTICO</div>
-            <div style="display: flex; flex-direction: column; gap: 2px">
-              <label class="switch">
-                <input type="checkbox" id="save-dtcs" />
-                <span class="slider"></span>
-                <span class="settings-label" style="margin-left: 8px">GUARDAR CODIGOS DE ERROR</span>
+            <div class="mb-1 text-[0.8rem] font-semibold text-secondary">DIAGNOSTICO</div>
+            <div class="flex flex-col gap-0.5">
+              <label class="switch relative mb-3.5 mt-[-6px] flex h-4 w-8 flex-shrink-0 whitespace-nowrap">
+                <input type="checkbox" id="save-dtcs" class="h-0 w-0 opacity-0" />
+                <span class="slider absolute inset-0 cursor-pointer rounded-full border border-border bg-hover transition-colors duration-200"></span>
+                <span class="settings-label ml-2 flex items-center whitespace-nowrap text-[0.78rem] font-medium text-secondary">GUARDAR CODIGOS DE ERROR</span>
               </label>
-              <label class="switch">
-                <input type="checkbox" id="auto-check-codes" />
-                <span class="slider"></span>
-                <span class="settings-label" style="margin-left: 8px">VERIF. CODIGOS AUTOM.</span>
+              <label class="switch relative mb-3.5 mt-[-6px] flex h-4 w-8 flex-shrink-0 whitespace-nowrap">
+                <input type="checkbox" id="auto-check-codes" class="h-0 w-0 opacity-0" />
+                <span class="slider absolute inset-0 cursor-pointer rounded-full border border-border bg-hover transition-colors duration-200"></span>
+                <span class="settings-label ml-2 flex items-center whitespace-nowrap text-[0.78rem] font-medium text-secondary">VERIF. CODIGOS AUTOM.</span>
               </label>
-              <label class="switch">
-                <input type="checkbox" id="use-freeze-frame" />
-                <span class="slider"></span>
-                <span class="settings-label" style="margin-left: 8px">LEER DE FOTOGRAMA</span>
+              <label class="switch relative mb-3.5 mt-[-6px] flex h-4 w-8 flex-shrink-0 whitespace-nowrap">
+                <input type="checkbox" id="use-freeze-frame" class="h-0 w-0 opacity-0" />
+                <span class="slider absolute inset-0 cursor-pointer rounded-full border border-border bg-hover transition-colors duration-200"></span>
+                <span class="settings-label ml-2 flex items-center whitespace-nowrap text-[0.78rem] font-medium text-secondary">LEER DE FOTOGRAMA</span>
               </label>
-              <label class="switch">
-                <input type="checkbox" id="auto-connect" />
-                <span class="slider"></span>
-                <span class="settings-label" style="margin-left: 8px">CONECTAR AL INICIAR</span>
+              <label class="switch relative mb-3.5 mt-[-6px] flex h-4 w-8 flex-shrink-0 whitespace-nowrap">
+                <input type="checkbox" id="auto-connect" class="h-0 w-0 opacity-0" />
+                <span class="slider absolute inset-0 cursor-pointer rounded-full border border-border bg-hover transition-colors duration-200"></span>
+                <span class="settings-label ml-2 flex items-center whitespace-nowrap text-[0.78rem] font-medium text-secondary">CONECTAR AL INICIAR</span>
               </label>
             </div>
           </div>
           <div>
-            <div class="screen-label" style="margin-bottom: 4px; font-size: 0.8rem; font-weight: 600; color: #999999">PRIVACIDAD</div>
-            <div style="display: flex; flex-direction: column; gap: 2px">
-              <label class="switch">
-                <input type="checkbox" id="hide-vin" />
-                <span class="slider"></span>
-                <span class="settings-label" style="margin-left: 8px">MOSTRAR VIN PARCIAL</span>
+            <div class="mb-1 text-[0.8rem] font-semibold text-secondary">PRIVACIDAD</div>
+            <div class="flex flex-col gap-0.5">
+              <label class="switch relative mb-3.5 mt-[-6px] flex h-4 w-8 flex-shrink-0 whitespace-nowrap">
+                <input type="checkbox" id="hide-vin" class="h-0 w-0 opacity-0" />
+                <span class="slider absolute inset-0 cursor-pointer rounded-full border border-border bg-hover transition-colors duration-200"></span>
+                <span class="settings-label ml-2 flex items-center whitespace-nowrap text-[0.78rem] font-medium text-secondary">MOSTRAR VIN PARCIAL</span>
               </label>
-              <label class="switch">
-                <input type="checkbox" id="del-logs" />
-                <span class="slider"></span>
-                <span class="settings-label" style="margin-left: 8px">ELIMINAR REGISTROS AL SALIR</span>
+              <label class="switch relative mb-3.5 mt-[-6px] flex h-4 w-8 flex-shrink-0 whitespace-nowrap">
+                <input type="checkbox" id="del-logs" class="h-0 w-0 opacity-0" />
+                <span class="slider absolute inset-0 cursor-pointer rounded-full border border-border bg-hover transition-colors duration-200"></span>
+                <span class="settings-label ml-2 flex items-center whitespace-nowrap text-[0.78rem] font-medium text-secondary">ELIMINAR REGISTROS AL SALIR</span>
               </label>
             </div>
           </div>
         </div>
 
-        <div class="screen-label" style="margin-top: 6px; margin-bottom: 2px; font-size: 0.9rem">CONVERSION DE UNIDADES</div>
-        <div style="display: flex; gap: 8px; flex-wrap: wrap">
-          <div class="dropdown" style="width: 120px">
-            <div class="settings-label" style="font-size: 0.65rem; margin-bottom: 1px">VELOCIDAD</div>
-            <button class="dropdown-toggle" data-target="speed" id="unit-preference">KM/H</button>
-            <ul class="dropdown-menu" id="dropdown-menu">
-              <li data-value="KilometersPerHour">KM/H</li>
-              <li data-value="MilesPerHour">MILLAS/H</li>
+        <div class="screen-label mb-0.5 mt-1.5 text-[0.9rem] font-semibold tracking-tight text-primary">CONVERSION DE UNIDADES</div>
+        <div class="flex flex-wrap gap-2">
+          <div class="dropdown relative inline-block w-[120px] select-none">
+            <div class="settings-label mb-px flex items-center text-[0.65rem] font-medium text-secondary">VELOCIDAD</div>
+            <button class="dropdown-toggle w-full cursor-pointer rounded border border-border bg-surface px-2 py-1 text-left text-[0.75rem] font-medium text-secondary transition-colors hover:border-accent" data-target="speed" id="unit-preference">KM/H</button>
+            <ul class="dropdown-menu absolute z-50 mt-0.5 w-full overflow-hidden rounded border border-border bg-surface" id="dropdown-menu">
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="KilometersPerHour">KM/H</li>
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="MilesPerHour">MILLAS/H</li>
             </ul>
           </div>
-          <div class="dropdown" style="width: 120px">
-            <div class="settings-label" style="font-size: 0.65rem; margin-bottom: 1px">DISTANCIA</div>
-            <button class="dropdown-toggle" data-target="distance" id="unit-preference">KILOMETROS</button>
-            <ul class="dropdown-menu" id="dropdown-menu">
-              <li data-value="Meters">METROS</li>
-              <li data-value="Kilometers">KILOMETROS</li>
-              <li data-value="Miles">MILLAS</li>
-              <li data-value="Feet">PIES</li>
+          <div class="dropdown relative inline-block w-[120px] select-none">
+            <div class="settings-label mb-px flex items-center text-[0.65rem] font-medium text-secondary">DISTANCIA</div>
+            <button class="dropdown-toggle w-full cursor-pointer rounded border border-border bg-surface px-2 py-1 text-left text-[0.75rem] font-medium text-secondary transition-colors hover:border-accent" data-target="distance" id="unit-preference">KILOMETROS</button>
+            <ul class="dropdown-menu absolute z-50 mt-0.5 w-full overflow-hidden rounded border border-border bg-surface" id="dropdown-menu">
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="Meters">METROS</li>
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="Kilometers">KILOMETROS</li>
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="Miles">MILLAS</li>
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="Feet">PIES</li>
             </ul>
           </div>
-          <div class="dropdown" style="width: 120px">
-            <div class="settings-label" style="font-size: 0.65rem; margin-bottom: 1px">TEMPERATURA</div>
-            <button class="dropdown-toggle" data-target="temperature" id="unit-preference">°C</button>
-            <ul class="dropdown-menu" id="dropdown-menu">
-              <li data-value="Celsius">°C</li>
-              <li data-value="Fahrenheit">°F</li>
+          <div class="dropdown relative inline-block w-[120px] select-none">
+            <div class="settings-label mb-px flex items-center text-[0.65rem] font-medium text-secondary">TEMPERATURA</div>
+            <button class="dropdown-toggle w-full cursor-pointer rounded border border-border bg-surface px-2 py-1 text-left text-[0.75rem] font-medium text-secondary transition-colors hover:border-accent" data-target="temperature" id="unit-preference">°C</button>
+            <ul class="dropdown-menu absolute z-50 mt-0.5 w-full overflow-hidden rounded border border-border bg-surface" id="dropdown-menu">
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="Celsius">°C</li>
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="Fahrenheit">°F</li>
             </ul>
           </div>
-          <div class="dropdown" style="width: 120px">
-            <div class="settings-label" style="font-size: 0.65rem; margin-bottom: 1px">TORQUE</div>
-            <button class="dropdown-toggle" data-target="torque" id="unit-preference">NM</button>
-            <ul class="dropdown-menu" id="dropdown-menu">
-              <li data-value="NewtonMeters">NM</li>
-              <li data-value="FootPounds">FT-LB</li>
+          <div class="dropdown relative inline-block w-[120px] select-none">
+            <div class="settings-label mb-px flex items-center text-[0.65rem] font-medium text-secondary">TORQUE</div>
+            <button class="dropdown-toggle w-full cursor-pointer rounded border border-border bg-surface px-2 py-1 text-left text-[0.75rem] font-medium text-secondary transition-colors hover:border-accent" data-target="torque" id="unit-preference">NM</button>
+            <ul class="dropdown-menu absolute z-50 mt-0.5 w-full overflow-hidden rounded border border-border bg-surface" id="dropdown-menu">
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="NewtonMeters">NM</li>
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="FootPounds">FT-LB</li>
             </ul>
           </div>
-          <div class="dropdown" style="width: 120px">
-            <div class="settings-label" style="font-size: 0.65rem; margin-bottom: 1px">PRESION</div>
-            <button class="dropdown-toggle" data-target="pressure" id="unit-preference">KPA</button>
-            <ul class="dropdown-menu" id="dropdown-menu">
-              <li data-value="Pascal">PA</li>
-              <li data-value="Kilopascal">KPA</li>
-              <li data-value="PSI">PSI</li>
+          <div class="dropdown relative inline-block w-[120px] select-none">
+            <div class="settings-label mb-px flex items-center text-[0.65rem] font-medium text-secondary">PRESION</div>
+            <button class="dropdown-toggle w-full cursor-pointer rounded border border-border bg-surface px-2 py-1 text-left text-[0.75rem] font-medium text-secondary transition-colors hover:border-accent" data-target="pressure" id="unit-preference">KPA</button>
+            <ul class="dropdown-menu absolute z-50 mt-0.5 w-full overflow-hidden rounded border border-border bg-surface" id="dropdown-menu">
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="Pascal">PA</li>
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="Kilopascal">KPA</li>
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="PSI">PSI</li>
             </ul>
           </div>
-          <div class="dropdown" style="width: 120px">
-            <div class="settings-label" style="font-size: 0.65rem; margin-bottom: 1px">CAUDAL</div>
-            <button class="dropdown-toggle" data-target="flowRate" id="unit-preference">L/H</button>
-            <ul class="dropdown-menu" id="dropdown-menu">
-              <li data-value="LitresPerHour">L/H</li>
-              <li data-value="GallonsPerHour">GAL/H</li>
+          <div class="dropdown relative inline-block w-[120px] select-none">
+            <div class="settings-label mb-px flex items-center text-[0.65rem] font-medium text-secondary">CAUDAL</div>
+            <button class="dropdown-toggle w-full cursor-pointer rounded border border-border bg-surface px-2 py-1 text-left text-[0.75rem] font-medium text-secondary transition-colors hover:border-accent" data-target="flowRate" id="unit-preference">L/H</button>
+            <ul class="dropdown-menu absolute z-50 mt-0.5 w-full overflow-hidden rounded border border-border bg-surface" id="dropdown-menu">
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="LitresPerHour">L/H</li>
+              <li class="cursor-pointer px-2 py-1 text-[0.75rem] font-medium text-secondary transition-colors hover:bg-hover hover:text-primary" data-value="GallonsPerHour">GAL/H</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <div id="notification-container"></div>
+    <div id="notification-container" class="fixed bottom-[26px] right-3.5 z-[1000] flex flex-col-reverse gap-2"></div>
   </body>
 
   <script>
